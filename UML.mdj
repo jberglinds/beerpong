@@ -3459,34 +3459,6 @@
 											"text": "-hits: int",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFNKHvDG5xWgYw=",
-											"_parent": {
-												"$ref": "AAAAAAFNKHrncZovreg="
-											},
-											"model": {
-												"$ref": "AAAAAAFNKHvDAZxHBGY="
-											},
-											"visible": true,
-											"enabled": true,
-											"lineColor": "#000000",
-											"fillColor": "#ffffff",
-											"fontColor": "#000000",
-											"font": "Arial;13;0",
-											"showShadow": true,
-											"containerChangeable": false,
-											"containerExtending": false,
-											"left": 497,
-											"top": 211,
-											"width": 126,
-											"height": 13,
-											"autoResize": false,
-											"underline": false,
-											"text": "-hitRatio: double",
-											"horizontalAlignment": 0,
-											"verticalAlignment": 5
 										}
 									],
 									"visible": true,
@@ -3501,7 +3473,7 @@
 									"left": 492,
 									"top": 161,
 									"width": 136,
-									"height": 68,
+									"height": 53,
 									"autoResize": false
 								},
 								{
@@ -3533,7 +3505,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 497,
-											"top": 234,
+											"top": 219,
 											"width": 126,
 											"height": 13,
 											"autoResize": false,
@@ -3561,7 +3533,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 497,
-											"top": 249,
+											"top": 234,
 											"width": 126,
 											"height": 13,
 											"autoResize": false,
@@ -3589,7 +3561,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 497,
-											"top": 264,
+											"top": 249,
 											"width": 126,
 											"height": 13,
 											"autoResize": false,
@@ -3617,7 +3589,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 497,
-											"top": 279,
+											"top": 264,
 											"width": 126,
 											"height": 13,
 											"autoResize": false,
@@ -3637,7 +3609,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 492,
-									"top": 229,
+									"top": 214,
 									"width": 136,
 									"height": 68,
 									"autoResize": false
@@ -5689,24 +5661,6 @@
 									"isStatic": false,
 									"isLeaf": false,
 									"type": "int",
-									"isReadOnly": false,
-									"isOrdered": false,
-									"isUnique": false,
-									"isDerived": false,
-									"aggregation": "none",
-									"isID": false
-								},
-								{
-									"_type": "UMLAttribute",
-									"_id": "AAAAAAFNKHvDAZxHBGY=",
-									"_parent": {
-										"$ref": "AAAAAAFNKHrnbponMiM="
-									},
-									"name": "hitRatio",
-									"visibility": "private",
-									"isStatic": false,
-									"isLeaf": false,
-									"type": "double",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
