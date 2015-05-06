@@ -18,7 +18,7 @@
             </Label>
          </children>
       </HBox>
-      <VBox layoutX="14.0" layoutY="14.0" prefHeight="92.0" prefWidth="250.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="15.0">
+      <VBox layoutX="14.0" layoutY="14.0" prefHeight="92.0" prefWidth="250.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
             <Label text="Teamname 1" textFill="WHITE">
                <font>
@@ -42,7 +42,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox alignment="TOP_RIGHT" layoutX="350.0" layoutY="2.0" prefHeight="92.0" prefWidth="250.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0">
+      <VBox alignment="TOP_RIGHT" layoutX="350.0" layoutY="2.0" prefHeight="92.0" prefWidth="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
             <Label text="Teamname 2" textFill="WHITE">
                <font>
@@ -76,5 +76,7 @@
             <Font name="System Bold" size="72.0" />
          </font>
       </Label>
+      <Pane layoutY="107.0" minHeight="200.0" prefHeight="200.0" prefWidth="600.0" style="-fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="110.0" />
+      <TextFlow fx:id="eventFlow" layoutX="200.0" layoutY="312.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 2;" textAlignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="320.0" />
    </children>
 </AnchorPane>
