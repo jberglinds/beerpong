@@ -1,4 +1,4 @@
-package sample;
+package beerpong;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,12 +10,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("gameView.fxml"));
+        primaryStage.setTitle("Beer Pong LIVE");
+        primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);
