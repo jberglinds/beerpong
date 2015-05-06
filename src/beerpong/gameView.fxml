@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="beerpong.Controller" fx:id="bg">
+<AnchorPane fx:id="bg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="beerpong.Controller">
    <children>
       <HBox alignment="TOP_CENTER" layoutX="81.0" layoutY="6.0" prefHeight="4.0" prefWidth="360.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="15.0">
          <children>
-            <Label text="Gamename" textFill="WHITE" fx:id="gamename" onMouseClicked="#strobe">
+            <Label fx:id="gamename" onMouseClicked="#strobe" text="Gamename" textFill="WHITE">
                <font>
                   <Font size="28.0" />
                </font>
@@ -64,5 +66,15 @@
             </Label>
          </children>
       </VBox>
+      <Label fx:id="team1score" layoutX="14.0" layoutY="298.0" text="0" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font name="System Bold" size="72.0" />
+         </font>
+      </Label>
+      <Label fx:id="team2score" layoutX="545.0" layoutY="298.0" text="0" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="15.0">
+         <font>
+            <Font name="System Bold" size="72.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

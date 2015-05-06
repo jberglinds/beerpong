@@ -2,6 +2,7 @@ package beerpong;
 
 import javafx.animation.FadeTransition;
 import javafx.event.Event;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
@@ -9,6 +10,8 @@ import javafx.util.Duration;
 public class Controller {
 
     public AnchorPane bg;
+    public Label gamename;
+    public Label team1score, team2score;
 
     public void strobe(Event event) {
         FadeTransition ft = new FadeTransition(Duration.millis(10), bg);
