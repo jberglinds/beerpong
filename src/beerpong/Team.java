@@ -135,10 +135,18 @@ public class Team {
      * @param type of throw, "hit" or "miss"
      */
     public void throwBall(String type) {
+        //Fixmeh
+        //Enum?
+        //Ny klass med typer?
+        //Strängar?
+        //Ta med index som parameter?
+        //Index för miss?
         if (type.equals("miss")) {
             System.out.println("You missed");
             return;
         }
+
+        //if(type.equals("bounce"))  ??
 
         if(type.equals("hit")) {
           //  hitCup(index)
