@@ -26,7 +26,11 @@ public class Team {
 
     }
 
-
+    /**
+     * Initializes all of the classes fields.
+     * @param name The name of the team.
+     * @param players A list of all players in the team.
+     */
     public Team(String name, Player[] players) {
         this.teamName = name;
         this.players = players;
@@ -62,48 +66,48 @@ public class Team {
     }
 
     /**
-     * 
-     * @return
+     * Returns a list of all players.
+     * @return an array of Players
      */
     public Player[] getPlayers() {
         return players;
     }
 
     /**
-     *
-     * @return
+     * Returns team name.
+     * @return field teamName
      */
     public String getTeamName() {
         return teamName;
     }
 
     /**
-     *
-     * @return
+     * Returns the score of the team.
+     * @return field score
      */
     public int getScore() {
         return score;
     }
 
     /**
-     *
-     * @return
+     * Returns ammount of throws left.
+     * @return field throwCount
      */
     public int getThrowCount() {
         return throwCount;
     }
 
     /**
-     *
-     * @param n
+     * Increases the score of the team by parameterized value.
+     * @param n ammount to increment
      */
     public void incrementScore(int n) {
         score = score + n;
     }
 
     /**
-     *
-     * @param index
+     * Marks the cup in the parameter as hit.
+     * @param index the index of the cup that was hit
      */
     public void hitCup(int index) {
         if (enemyCups[index] == null) {
@@ -128,13 +132,17 @@ public class Team {
      * Throws a ball and does other calls depending on what the ball hit.
      * If the ball hits a cup hitCup() i called upon.
      * If not, then nothing more is done
+     * @param type of throw, "hit" or "miss"
      */
-    public void throwBall() {
-        // if (Miss)
-        // return;
+    public void throwBall(String type) {
+        if (type.equals("miss")) {
+            System.out.println("You missed");
+            return;
+        }
 
-        // if(Träff)
-        // hitCup(int träffadMugg)
+        if(type.equals("hit")) {
+          //  hitCup(index)
+        }
 
         throwCount--;
     }
