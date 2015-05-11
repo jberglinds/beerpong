@@ -1,17 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="bg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="beerpong.Controller">
    <children>
-      <Label alignment="CENTER" layoutX="229.0" layoutY="14.0" text="Game Name" textFill="WHITE">
+      <HBox alignment="TOP_CENTER" layoutX="81.0" layoutY="6.0" prefHeight="4.0" prefWidth="360.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="15.0">
+         <children>
+            <Label fx:id="gamename" onMouseClicked="#strobe" text="Gamename" textFill="WHITE">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox layoutX="14.0" layoutY="14.0" prefHeight="92.0" prefWidth="250.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+         <children>
+            <Label text="Teamname 1" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label text="Player 1" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label text="Player 2" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label text="Player 3" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_RIGHT" layoutX="350.0" layoutY="2.0" prefHeight="92.0" prefWidth="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+         <children>
+            <Label text="Teamname 2" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label text="Player 1" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label text="Player 2" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label text="Player 3" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Label fx:id="team1score" layoutX="14.0" layoutY="298.0" text="0" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="72.0" />
          </font>
       </Label>
+      <Label fx:id="team2score" layoutX="545.0" layoutY="298.0" text="0" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="15.0">
+         <font>
+            <Font name="System Bold" size="72.0" />
+         </font>
+      </Label>
+      <Pane layoutY="107.0" minHeight="200.0" prefHeight="200.0" prefWidth="600.0" style="-fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="110.0" />
+      <TextFlow fx:id="eventFlow" layoutX="200.0" layoutY="312.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 2;" textAlignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="320.0" />
    </children>
-</Pane>
+</AnchorPane>
