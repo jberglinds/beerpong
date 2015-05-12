@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
@@ -76,7 +77,43 @@
             <Font name="System Bold" size="72.0" />
          </font>
       </Label>
-      <Pane layoutY="107.0" minHeight="200.0" prefHeight="200.0" prefWidth="600.0" style="-fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="110.0" />
       <TextFlow fx:id="eventFlow" layoutX="200.0" layoutY="312.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 2;" textAlignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="320.0" />
+      <AnchorPane fx:id="gamefield" layoutY="107.0" prefHeight="200.0" prefWidth="600.0" style="-fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="110.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="18.0" prefWidth="24.0" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="288.0" AnchorPane.rightAnchor="288.0" AnchorPane.topAnchor="91.0">
+               <children>
+                  <RadioButton fx:id="Bounce" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#bounceAdded" />
+               </children>
+            </HBox>
+            <Pane layoutX="443.0" layoutY="28.1" rotate="180.0" AnchorPane.rightAnchor="20.0">
+               <children>
+                  <Circle fill="WHITE" layoutY="31.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="71.0" />
+                  <Circle fill="WHITE" layoutX="75.0" layoutY="46.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="86.0" />
+                  <Circle fill="WHITE" layoutX="25.0" layoutY="15.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="55.0" />
+                  <Circle fill="WHITE" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="40.0" />
+                  <Circle fill="WHITE" layoutX="50.0" layoutY="62.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="102.0" />
+                  <Circle fill="WHITE" layoutX="25.0" layoutY="46.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="86.0" />
+                  <Circle fill="WHITE" layoutX="50.0" layoutY="31.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="71.0" />
+                  <Circle fill="WHITE" layoutY="93.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="133.0" />
+                  <Circle fill="WHITE" layoutX="25.0" layoutY="77.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="117.0" />
+                  <Circle fill="WHITE" layoutY="62.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="102.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="20.0" layoutY="55.0" AnchorPane.leftAnchor="20.0">
+               <children>
+                  <Circle fill="WHITE" layoutY="31.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="71.0" />
+                  <Circle fill="WHITE" layoutX="75.0" layoutY="46.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="86.0" />
+                  <Circle fill="WHITE" layoutX="25.0" layoutY="15.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="55.0" />
+                  <Circle fill="WHITE" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="40.0" />
+                  <Circle fill="WHITE" layoutX="50.0" layoutY="62.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="102.0" />
+                  <Circle fill="WHITE" layoutX="25.0" layoutY="46.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="86.0" />
+                  <Circle fill="WHITE" layoutX="50.0" layoutY="31.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="71.0" />
+                  <Circle fill="WHITE" layoutY="93.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="133.0" />
+                  <Circle fill="WHITE" layoutX="25.0" layoutY="77.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="117.0" />
+                  <Circle fill="WHITE" layoutY="62.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="102.0" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

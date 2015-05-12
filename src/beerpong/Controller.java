@@ -21,4 +21,14 @@ public class Controller {
         ft.setAutoReverse(true);
         ft.play();
     }
+
+    public void bounceAdded(Event event) {
+        FadeTransition ft = new FadeTransition(Duration.millis(10), bg);
+        ft.setFromValue(1.0);
+        ft.setToValue(0);
+        ft.setCycleCount(100);
+        ft.setAutoReverse(true);
+        ft.play();
+    }
+
 }
