@@ -6,12 +6,14 @@ package beerpong;
  */
 public class Cup {
     private boolean isHit;
+    private boolean hitThisRound;
 
     /**
      * New cup with false assigned to isHit.
      */
     public Cup() {
         isHit = false;
+        hitThisRound = false;
     }
 
     /**
@@ -23,9 +25,22 @@ public class Cup {
     }
 
     /**
-     * Marks the cup as hit.
+     * Marks the cup as hit this round.
      */
     public void hit(){
+        hitThisRound = true;
+    }
+
+    /**
+     * Tells you whether the cup has been hit this round.
+     * @return true if hit this round, false otherwise
+     */
+    public boolean thisRound() { return hitThisRound; }
+
+    /**
+     * Marks the cup as hit
+     */
+    public void hitAfterRound() {
         isHit = true;
     }
 }
