@@ -13,6 +13,7 @@ public class Team {
     private Cup[] enemyCups;
     private int score;
     private int throwCount;
+    private int currentPlayerIndex;
 
 
     public static void main(String[] args) {
@@ -36,6 +37,7 @@ public class Team {
         this.players = players;
         this.throwCount = players.length;
         this.score = 0;
+        this.currentPlayerIndex = 0;
 
         // Initializes the enemyCups array depending on how many players are in the team
         switch (players.length) {
@@ -126,33 +128,50 @@ public class Team {
         else {
             incrementScore(1);
         }
+        players[currentPlayerIndex].newHit();
     }
 
     /**
-     * Throws a ball and does other calls depending on what the ball hit.
-     * If the ball hits a cup hitCup() i called upon.
-     * If not, then nothing more is done
-     * @param type of throw, "hit" or "miss"
+     * Resets the player index to 0.
      */
-    public void throwBall(String type) {
+    public void resetPlayerIndex() {
+        currentPlayerIndex = 0;
+    }
+
+    /**
+     * Resets the throw count to ammount of players.
+     */
+    public void resetThrowCount() {
+        throwCount = players.length;
+    }
+
+    /**
+     * Throws a ball and gives the next player his/her turn. Reduces the throwcount.
+     * Checks if the throwcount has reached 0, in which case the team is done.
+     * Makes a call onto hitBall() if no a miss is registered.
+     * @param index index of hit cup or -1 if miss.
+     * @return boolean false if the team has no remaining throws, true otherwise.
+     */
+    public boolean throwBall(int index) {
         //Fixmeh
-        //Enum?
-        //Ny klass med typer?
         //Strängar?
         //Ta med index som parameter?
         //Index för miss?
-        if (type.equals("miss")) {
-            System.out.println("You missed");
-            return;
+
+        //Studs?
+        if (index == -1) {
+            System.out.println(players[currentPlayerIndex].getName() + " missed");
+        } else {
+            System.out.println(players[currentPlayerIndex].getName() + " hit cup nr: " + (index + 1));
+            hitCup(index);
         }
-
-        //if(type.equals("bounce"))  ??
-
-        if(type.equals("hit")) {
-          //  hitCup(index)
-        }
-
+        currentPlayerIndex++;
         throwCount--;
+        if (throwCount == 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }

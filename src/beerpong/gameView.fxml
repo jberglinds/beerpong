@@ -113,6 +113,7 @@
                   <Circle fill="WHITE" layoutY="62.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="102.0" />
                </children>
             </Pane>
+            <Button alignment="BOTTOM_CENTER" layoutX="257.0" layoutY="164.0" mnemonicParsing="false" onAction="#miss" text="Miss" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
          </children>
       </AnchorPane>
    </children>
