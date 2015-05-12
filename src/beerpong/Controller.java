@@ -4,14 +4,17 @@ import javafx.animation.FadeTransition;
 import javafx.event.Event;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 
 public class Controller {
 
     public AnchorPane bg;
-    public Label gamename;
+    public Label gameName;
     public Label team1score, team2score;
+    public Circle oneRight, twoRight, threeRight, fourRight, fiveRight, sixRight, sevenRight, eightRight, nineRight, tenRight;
+    public Circle oneLeft, twoLeft, threeLeft, fourLeft, fiveLeft, sixLeft, sevenLeft, eightLeft, nineLeft, tenLeft;
 
     private boolean bounce;
 
@@ -22,12 +25,14 @@ public class Controller {
     public Controller() {
         teams = new Team[2];
 
-        Player[] p = new Player[1];
+        Player[] p = new Player[2];
         p[0] = new Player("swag");
+        p[1] = new Player("swagg");
         Team teamOne = new Team("teamOne", p);
 
-        Player[] p2 = new Player[1];
+        Player[] p2 = new Player[2];
         p2[0] = new Player("yolo");
+        p2[1] = new Player("yoloo");
         Team teamTwo = new Team("teamTwo", p2);
 
         teams[0] = teamOne;

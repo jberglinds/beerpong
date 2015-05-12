@@ -113,7 +113,7 @@ public class Team {
      */
     public void hitCup(int index) {
         if (enemyCups[index] == null) {
-            System.out.println("enemyCups[index] == null; nullpointer exception here");
+            System.out.println("enemyCups[index] == null; null pointer exception here");
             return;
         }
 
@@ -128,7 +128,6 @@ public class Team {
         else {
             incrementScore(1);
         }
-        players[currentPlayerIndex].newHit();
     }
 
     /**
@@ -168,9 +167,11 @@ public class Team {
         //Studs?
         if (index == -1) {
             System.out.println(players[currentPlayerIndex].getName() + " missed " + bounceString);
+            players[currentPlayerIndex].newMiss();
         } else {
             System.out.println(players[currentPlayerIndex].getName() + " hit cup nr: " + (index + 1));
             hitCup(index);
+            players[currentPlayerIndex].newHit();
         }
         currentPlayerIndex++;
         throwCount--;
