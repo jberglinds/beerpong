@@ -152,15 +152,22 @@ public class Team {
      * @param index index of hit cup or -1 if miss.
      * @return boolean false if the team has no remaining throws, true otherwise.
      */
-    public boolean throwBall(int index) {
+    public boolean throwBall(int index, boolean bounced) {
         //Fixmeh
         //Strängar?
         //Ta med index som parameter?
         //Index för miss?
+        String bounceString;
+
+        if (bounced) {
+            bounceString = "but atleast it was a nice bounce attempt";
+        } else {
+            bounceString = "";
+        }
 
         //Studs?
         if (index == -1) {
-            System.out.println(players[currentPlayerIndex].getName() + " missed");
+            System.out.println(players[currentPlayerIndex].getName() + " missed " + bounceString);
         } else {
             System.out.println(players[currentPlayerIndex].getName() + " hit cup nr: " + (index + 1));
             hitCup(index);

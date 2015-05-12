@@ -60,7 +60,7 @@ public class Controller {
      * @param event a click on the miss button.
      */
     public void miss(Event event) {
-        boolean b  = teams[currentTeamIndex].throwBall(-1);
+        boolean b  = teams[currentTeamIndex].throwBall(-1, bounce);
 
         if (!b) {
             if (currentTeamIndex == 0) {
@@ -72,7 +72,6 @@ public class Controller {
             teams[currentTeamIndex].resetThrowCount();
             System.out.println("It is time for " + teams[currentTeamIndex].getTeamName() + " to play");
         }
-        bounce = false;
     }
 
 }
