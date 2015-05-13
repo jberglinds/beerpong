@@ -111,20 +111,14 @@ public class Team {
      * Marks the cup in the parameter as hit.
      * @param index the index of the cup that was hit
      */
-    public void hitCup(int index) {
-        if (enemyCups[index] == null) {
-            System.out.println("enemyCups[index] == null; null pointer exception here");
-            return;
-        }
-
-        if (enemyCups[index].status()) {
-            System.out.println("This cup is already hit");
-            return;
+    public void hitCup(int index, boolean bounced) {
+        if(bounced) {
+            incrementScore(1);
         }
 
         if (enemyCups[index].thisRound()) {
             incrementScore(2);
-        } // Lägg till studs
+        }
         else {
             incrementScore(1);
         }
@@ -160,13 +154,13 @@ public class Team {
             bounceString = "";
         }
 
-        //Studs?
         if (index == -1) {
             System.out.println(players[currentPlayerIndex].getName() + " missed " + bounceString);
             players[currentPlayerIndex].newMiss();
+            incrementScore(1);
         } else {
             System.out.println(players[currentPlayerIndex].getName() + " hit cup nr: " + (index + 1));
-            hitCup(index);
+            hitCup(index, bounced);
             players[currentPlayerIndex].newHit();
         }
         currentPlayerIndex++;

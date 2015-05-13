@@ -65,6 +65,12 @@ public class Controller {
     public void miss(Event event) {
         boolean b  = teams[currentTeamIndex].throwBall(-1, bounce);
 
+        if (currentTeamIndex == 0) {
+            team1score.setText(Integer.toString(teams[currentTeamIndex].getScore()));
+        } else {
+            team2score.setText(Integer.toString(teams[currentTeamIndex].getScore()));
+        }
+
         if (!b) {
             if (currentTeamIndex == 0) {
                 currentTeamIndex = 1;
@@ -77,6 +83,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Takes in 4 parameters, Team name and the names of all players. From this
+     * team one is created.
+     * @param event Clicking on the team name
+     */
     public void createTeam(Event event) {
         final Stage primaryStage = new Stage();
         Pane pane = new Pane();
@@ -84,24 +95,28 @@ public class Controller {
         b.setTranslateX(150);
         b.setTranslateY(160);
 
+        //Team name field
         final javafx.scene.control.TextField team = new javafx.scene.control.TextField();
         team.setText("What is your team name");
         team.setTranslateX(100);
         team.setTranslateY(10);
-
+        //Player one field
         final javafx.scene.control.TextField player1 = new javafx.scene.control.TextField();
         player1.setText("Player 1 name");
         player1.setTranslateX(100);
         player1.setTranslateY(50);
+        //Player two field
         final javafx.scene.control.TextField player2 = new javafx.scene.control.TextField();
         player2.setText("Player 2 name");
         player2.setTranslateX(100);
         player2.setTranslateY(90);
+        //Player three field
         final javafx.scene.control.TextField player3 = new javafx.scene.control.TextField();
         player3.setText("Player 3 name");
         player3.setTranslateX(100);
         player3.setTranslateY(130);
 
+        //On click of button
         b.setOnAction(
                 new EventHandler<ActionEvent>() {
                     @Override
@@ -127,6 +142,11 @@ public class Controller {
     }
 
 
+    /**
+     * Takes in 4 parameters, Team name and the names of all players. From this
+     * team two is created.
+     * @param event Clicking on the teamn ame
+     */
     public void createTeam2(Event event) {
         final Stage primaryStage = new Stage();
         Pane pane = new Pane();
@@ -134,24 +154,28 @@ public class Controller {
         b.setTranslateX(150);
         b.setTranslateY(160);
 
+        //Team name field
         final javafx.scene.control.TextField team = new javafx.scene.control.TextField();
         team.setText("What is your team name");
         team.setTranslateX(100);
         team.setTranslateY(10);
-
+        //Player one field
         final javafx.scene.control.TextField player1 = new javafx.scene.control.TextField();
         player1.setText("Player 1 name");
         player1.setTranslateX(100);
         player1.setTranslateY(50);
+        //Player two field
         final javafx.scene.control.TextField player2 = new javafx.scene.control.TextField();
         player2.setText("Player 2 name");
         player2.setTranslateX(100);
         player2.setTranslateY(90);
+        //Player three field
         final javafx.scene.control.TextField player3 = new javafx.scene.control.TextField();
         player3.setText("Player 3 name");
         player3.setTranslateX(100);
         player3.setTranslateY(130);
 
+        //On click of button
         b.setOnAction(
                 new EventHandler<ActionEvent>() {
                     @Override
