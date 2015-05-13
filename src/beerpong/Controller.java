@@ -78,5 +78,6 @@ public class Controller {
             System.out.println("It is time for " + teams[currentTeamIndex].getTeamName() + " to play");
         }
     }
+    
 
 }

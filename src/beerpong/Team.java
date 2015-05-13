@@ -1,7 +1,7 @@
 package beerpong;
 
 /**
- * Class representing a team in a beerpong-game.
+ * Class representing a team in a beer pong game.
  * For keeping track on each teams round in the game.
  * Created by emil on 2015-05-11.
  */
@@ -92,7 +92,7 @@ public class Team {
     }
 
     /**
-     * Returns ammount of throws left.
+     * Returns amount of throws left.
      * @return field throwCount
      */
     public int getThrowCount() {
@@ -101,7 +101,7 @@ public class Team {
 
     /**
      * Increases the score of the team by parameterized value.
-     * @param n ammount to increment
+     * @param n amount to increment
      */
     public void incrementScore(int n) {
         score = score + n;
@@ -138,15 +138,15 @@ public class Team {
     }
 
     /**
-     * Resets the throw count to ammount of players.
+     * Resets the throw count to amount of players.
      */
     public void resetThrowCount() {
         throwCount = players.length;
     }
 
     /**
-     * Throws a ball and gives the next player his/her turn. Reduces the throwcount.
-     * Checks if the throwcount has reached 0, in which case the team is done.
+     * Throws a ball and gives the next player his/her turn. Reduces the throw count.
+     * Checks if the throw count has reached 0, in which case the team is done.
      * Makes a call onto hitBall() if no a miss is registered.
      * @param index index of hit cup or -1 if miss.
      * @return boolean false if the team has no remaining throws, true otherwise.
@@ -159,7 +159,7 @@ public class Team {
         String bounceString;
 
         if (bounced) {
-            bounceString = "but atleast it was a nice bounce attempt";
+            bounceString = "but at least it was a nice bounce attempt";
         } else {
             bounceString = "";
         }
