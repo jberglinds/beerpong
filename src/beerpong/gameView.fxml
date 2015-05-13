@@ -22,22 +22,22 @@
       </HBox>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="92.0" prefWidth="250.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
-            <Label fx:id="team1name" onMouseClicked="#nameChange" text="Teamname 1" textFill="WHITE">
+            <Label fx:id="team1name" onMouseClicked="#createTeam" text="Teamname 1" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label text="Player 1" textFill="WHITE">
+            <Label fx:id="player11" text="Player 1" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label text="Player 2" textFill="WHITE">
+            <Label fx:id="player12" text="Player 2" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label text="Player 3" textFill="WHITE">
+            <Label fx:id="player13" text="Player 3" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -46,22 +46,22 @@
       </VBox>
       <VBox alignment="TOP_RIGHT" layoutX="350.0" layoutY="2.0" prefHeight="92.0" prefWidth="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
-            <Label text="Teamname 2" textFill="WHITE">
+            <Label fx:id="team2name" onMouseClicked="#createTeam2" text="Teamname 2" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label text="Player 1" textFill="WHITE">
+            <Label fx:id="player21" text="Player 1" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label text="Player 2" textFill="WHITE">
+            <Label fx:id="player22" text="Player 2" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label text="Player 3" textFill="WHITE">
+            <Label fx:id="player23" text="Player 3" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

@@ -152,10 +152,6 @@ public class Team {
      * @return boolean false if the team has no remaining throws, true otherwise.
      */
     public boolean throwBall(int index, boolean bounced) {
-        //Fixmeh
-        //Strängar?
-        //Ta med index som parameter?
-        //Index för miss?
         String bounceString;
 
         if (bounced) {
