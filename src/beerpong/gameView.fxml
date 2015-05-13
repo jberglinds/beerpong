@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.geometry.*?>
@@ -21,7 +22,7 @@
       </HBox>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="92.0" prefWidth="250.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
-            <Label text="Teamname 1" textFill="WHITE">
+            <Label fx:id="team1name" onMouseClicked="#nameChange" text="Teamname 1" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

@@ -2,9 +2,13 @@ package beerpong;
 
 import javafx.animation.FadeTransition;
 import javafx.event.Event;
+import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
@@ -15,6 +19,7 @@ public class Controller {
     public Label team1score, team2score;
     public Circle oneRight, twoRight, threeRight, fourRight, fiveRight, sixRight, sevenRight, eightRight, nineRight, tenRight;
     public Circle oneLeft, twoLeft, threeLeft, fourLeft, fiveLeft, sixLeft, sevenLeft, eightLeft, nineLeft, tenLeft;
+    public Label team1name;
 
     private boolean bounce;
 
@@ -26,14 +31,14 @@ public class Controller {
         teams = new Team[2];
 
         Player[] p = new Player[2];
-        p[0] = new Player("swag");
-        p[1] = new Player("swagg");
-        Team teamOne = new Team("teamOne", p);
+        p[0] = new Player("Emil");
+        p[1] = new Player("Jonathan");
+        Team teamOne = new Team("Dickteam", p);
 
         Player[] p2 = new Player[2];
-        p2[0] = new Player("yolo");
-        p2[1] = new Player("yoloo");
-        Team teamTwo = new Team("teamTwo", p2);
+        p2[0] = new Player("Jonas");
+        p2[1] = new Player("Mutte");
+        Team teamTwo = new Team("Snoken", p2);
 
         teams[0] = teamOne;
         teams[1] = teamTwo;
@@ -78,6 +83,16 @@ public class Controller {
             System.out.println("It is time for " + teams[currentTeamIndex].getTeamName() + " to play");
         }
     }
-    
+
+    public void nameChange(Event event) {
+        Stage primaryStage = new Stage();
+        VBox vbox = new VBox();
+        ComboBox combo = new ComboBox();
+        combo.getItems().addAll("1v1", "2v2", "3v3");
+        combo.setPromptText("Amount of players on each team");
+        vbox.getChildren().add(combo);
+        primaryStage.setScene(new Scene(vbox, 400, 200));
+        primaryStage.show();
+    }
 
 }
