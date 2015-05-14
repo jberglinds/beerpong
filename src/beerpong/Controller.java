@@ -85,7 +85,8 @@ public class Controller {
 
     /**
      * Takes in 4 parameters, Team name and the names of all players. From this
-     * team one is created.
+     * the team is created. The team is created depending on whether team one or
+     * team two is clicked on the screen.
      * @param event Clicking on the team name
      */
     public void createTeam(Event event) {
@@ -116,90 +117,55 @@ public class Controller {
         player3.setTranslateX(100);
         player3.setTranslateY(130);
 
-        //On click of button
-        b.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        String teamName = team.getText();
-                        Player playerOne = new Player(player1.getText());
-                        Player playerTwo = new Player(player2.getText());
-                        Player playerThree = new Player(player3.getText());
-                        Player[] players = {playerOne, playerTwo, playerThree};
-                        primaryStage.close();
-                        team1name.setText(teamName);
-                        player11.setText(playerOne.getName());
-                        player12.setText(playerTwo.getName());
-                        player13.setText(playerThree.getName());
-                        teamOne = new Team(teamName, players);
-                        teams[0] = teamOne;
-                    }
-                });
+
+        if(event.getSource() == team1name) {
+            //On click of button
+            b.setOnAction(
+                    new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            String teamName = team.getText();
+                            Player playerOne = new Player(player1.getText());
+                            Player playerTwo = new Player(player2.getText());
+                            Player playerThree = new Player(player3.getText());
+                            Player[] players = {playerOne, playerTwo, playerThree};
+                            primaryStage.close();
+                            team1name.setText(teamName);
+                            player11.setText(playerOne.getName());
+                            player12.setText(playerTwo.getName());
+                            player13.setText(playerThree.getName());
+                            teamOne = new Team(teamName, players);
+                            teams[0] = teamOne;
+                        }
+                    });
+        }
+
+        if (event.getSource() == team2name) {
+            //On click of button
+            b.setOnAction(
+                    new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            String teamName = team.getText();
+                            Player playerOne = new Player(player1.getText());
+                            Player playerTwo = new Player(player2.getText());
+                            Player playerThree = new Player(player3.getText());
+                            Player[] players = {playerOne, playerTwo, playerThree};
+                            primaryStage.close();
+                            team2name.setText(teamName);
+                            player21.setText(playerOne.getName());
+                            player22.setText(playerTwo.getName());
+                            player23.setText(playerThree.getName());
+                            teamTwo = new Team(teamName, players);
+                            teams[1] = teamTwo;
+                        }
+                    });
+            }
 
         pane.getChildren().addAll(team, player1, player2, player3, b);
         primaryStage.setScene(new Scene(pane, 400, 200));
         primaryStage.show();
     }
-
-
-    /**
-     * Takes in 4 parameters, Team name and the names of all players. From this
-     * team two is created.
-     * @param event Clicking on the teamn ame
-     */
-    public void createTeam2(Event event) {
-        final Stage primaryStage = new Stage();
-        Pane pane = new Pane();
-        Button b = new Button("Done");
-        b.setTranslateX(150);
-        b.setTranslateY(160);
-
-        //Team name field
-        final javafx.scene.control.TextField team = new javafx.scene.control.TextField();
-        team.setText("What is your team name");
-        team.setTranslateX(100);
-        team.setTranslateY(10);
-        //Player one field
-        final javafx.scene.control.TextField player1 = new javafx.scene.control.TextField();
-        player1.setText("Player 1 name");
-        player1.setTranslateX(100);
-        player1.setTranslateY(50);
-        //Player two field
-        final javafx.scene.control.TextField player2 = new javafx.scene.control.TextField();
-        player2.setText("Player 2 name");
-        player2.setTranslateX(100);
-        player2.setTranslateY(90);
-        //Player three field
-        final javafx.scene.control.TextField player3 = new javafx.scene.control.TextField();
-        player3.setText("Player 3 name");
-        player3.setTranslateX(100);
-        player3.setTranslateY(130);
-
-        //On click of button
-        b.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        String teamName = team.getText();
-                        Player playerOne = new Player(player1.getText());
-                        Player playerTwo = new Player(player2.getText());
-                        Player playerThree = new Player(player3.getText());
-                        Player[] players = {playerOne, playerTwo, playerThree};
-                        primaryStage.close();
-                        team2name.setText(teamName);
-                        player21.setText(playerOne.getName());
-                        player22.setText(playerTwo.getName());
-                        player23.setText(playerThree.getName());
-                        teamTwo = new Team(teamName, players);
-                        teams[1] = teamTwo;
-                    }
-                });
-
-        pane.getChildren().addAll(team, player1, player2, player3, b);
-        primaryStage.setScene(new Scene(pane, 400, 200));
-        primaryStage.show();
-    }
-
 
     public Button btn1, btn2;
     public void handleButton(ActionEvent actionEvent) {
