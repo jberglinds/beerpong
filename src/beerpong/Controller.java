@@ -167,13 +167,131 @@ public class Controller {
         primaryStage.show();
     }
 
-    public Button btn1, btn2;
-    public void handleButton(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == btn1){
-            System.out.println("btn1 was pressed");
+
+    /**
+     * If a hit is registered on the graphic board a call will be made to
+     * the current team representing a hit. If throwBall() returns false the
+     * team has used all their throws and it will be the other teams turn.
+     * Only the enemies cups are available for play at any time.
+     * @param event A click on any cup in play at that particular time.
+     */
+    public void hit(Event event) {
+        //If the right team is playing we only handle left side cups
+        if (currentTeamIndex == 1) {
+            int index = 0;
+            if (event.getSource() == oneLeft) {
+                System.out.println("Left 1");
+                index = 1;
+            }
+            else if (event.getSource() == twoLeft) {
+                System.out.println("Left 2");
+                index = 2;
+            }
+            else if (event.getSource() == threeLeft) {
+                System.out.println("Left 3");
+                index = 3;
+            }
+            else if (event.getSource() == fourLeft) {
+                System.out.println("Left 4");
+                index = 4;
+            }
+            else if (event.getSource() == fiveLeft) {
+                System.out.println("Left 5");
+                index = 5;
+            }
+            else if (event.getSource() == sixLeft) {
+                System.out.println("Left 6");
+                index = 6;
+            }
+            else if (event.getSource() == sevenLeft) {
+                System.out.println("Left 7");
+                index = 7;
+            }
+            else if (event.getSource() == eightLeft) {
+                System.out.println("Left 8");
+                index = 8;
+            }
+            else if (event.getSource() == nineLeft) {
+                System.out.println("Left 9");
+                index = 9;
+            }
+            else if (event.getSource() == tenLeft) {
+                System.out.println("Left 10");
+                index = 10;
+            }
+
+            if (index != 0) {
+                boolean b = teams[currentTeamIndex].throwBall(index-1, bounce);
+                team2score.setText(Integer.toString(teams[currentTeamIndex].getScore()));
+
+                if (!b) {
+                    currentTeamIndex = 0;
+                    teams[currentTeamIndex].resetPlayerIndex();
+                    teams[currentTeamIndex].resetThrowCount();
+                    System.out.println("It is time for " + teams[currentTeamIndex].getTeamName() + " to play");
+                }
+            }
+
+        //If the left side is playing we only handle right side cups
+        } else {
+            int index = 0;
+            if (event.getSource() == oneRight) {
+                System.out.println("Right 1");
+                index = 1;
+            }
+            else if (event.getSource() == twoRight) {
+                System.out.println("Right 2");
+                index = 2;
+            }
+            else if (event.getSource() == threeRight) {
+                System.out.println("Right 3");
+                index = 3;
+            }
+            else if (event.getSource() == fourRight) {
+                System.out.println("Right 4");
+                index = 4;
+            }
+            else if (event.getSource() == fiveRight) {
+                System.out.println("Right 5");
+                index = 5;
+            }
+            else if (event.getSource() == sixRight) {
+                System.out.println("Right 6");
+                index = 6;
+            }
+            else if (event.getSource() == sevenRight) {
+                System.out.println("Right 7");
+                index = 7;
+            }
+            else if (event.getSource() == eightRight) {
+                System.out.println("Right 8");
+                index = 8;
+            }
+            else if (event.getSource() == nineRight) {
+                System.out.println("Right 9");
+                index = 9;
+            }
+            else if (event.getSource() == tenRight) {
+                System.out.println("Right 10");
+                index = 10;
+            }
+
+
+            if (index != 0) {
+                boolean b = teams[currentTeamIndex].throwBall(index-1, bounce);
+                team1score.setText(Integer.toString(teams[currentTeamIndex].getScore()));
+
+                if (!b) {
+                    currentTeamIndex = 1;
+                    teams[currentTeamIndex].resetPlayerIndex();
+                    teams[currentTeamIndex].resetThrowCount();
+                    System.out.println("It is time for " + teams[currentTeamIndex].getTeamName() + " to play");
+                }
+            }
         }
-        if (actionEvent.getSource() == btn2){
-            System.out.println("btn2 was pressed");
-        }
+
+
+
+
     }
 }

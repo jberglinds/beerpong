@@ -120,6 +120,7 @@ public class Team {
             incrementScore(2);
         }
         else {
+            enemyCups[index].hit();
             incrementScore(1);
         }
     }
@@ -157,7 +158,6 @@ public class Team {
         if (index == -1) {
             System.out.println(players[currentPlayerIndex].getName() + " missed " + bounceString);
             players[currentPlayerIndex].newMiss();
-            incrementScore(1);
         } else {
             System.out.println(players[currentPlayerIndex].getName() + " hit cup nr: " + (index + 1));
             hitCup(index, bounced);
