@@ -150,16 +150,16 @@ public class Team {
         String bounceString;
 
         if (bounced) {
-            bounceString = "but at least it was a nice bounce attempt";
+            bounceString = " with a sweet bounce.";
         } else {
             bounceString = "";
         }
 
         if (index == -1) {
-            System.out.println(players[currentPlayerIndex].getName() + " missed " + bounceString);
+            System.out.println(players[currentPlayerIndex].getName() + " missed.");
             players[currentPlayerIndex].newMiss();
         } else {
-            System.out.println(players[currentPlayerIndex].getName() + " hit cup nr: " + (index + 1));
+            System.out.println(players[currentPlayerIndex].getName() + " hit cup nr: " + (index + 1) + bounceString);
             hitCup(index, bounced);
             players[currentPlayerIndex].newHit();
         }
