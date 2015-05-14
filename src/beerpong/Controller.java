@@ -199,4 +199,15 @@ public class Controller {
         primaryStage.setScene(new Scene(pane, 400, 200));
         primaryStage.show();
     }
+
+
+    public Button btn1, btn2;
+    public void handleButton(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == btn1){
+            System.out.println("btn1 was pressed");
+        }
+        if (actionEvent.getSource() == btn2){
+            System.out.println("btn2 was pressed");
+        }
+    }
 }

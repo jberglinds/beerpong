@@ -115,6 +115,8 @@
                </children>
             </Pane>
             <Button alignment="BOTTOM_CENTER" layoutX="257.0" layoutY="164.0" mnemonicParsing="false" onAction="#miss" text="Miss" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
+            <Button fx:id="btn1" layoutX="194.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleButton" text="Button 1" />
+            <Button fx:id="btn2" layoutX="316.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleButton" text="Button 2" />
          </children>
       </AnchorPane>
    </children>
