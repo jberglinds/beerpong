@@ -1,7 +1,7 @@
 package beerpong;
 
 /**
- * Class representing a team in a beerpong-game.
+ * Class representing a team in a beer pong game.
  * For keeping track on each teams round in the game.
  * Created by emil on 2015-05-11.
  */
@@ -13,6 +13,7 @@ public class Team {
     private Cup[] enemyCups;
     private int score;
     private int throwCount;
+    private int currentPlayerIndex;
 
 
     public static void main(String[] args) {
@@ -36,6 +37,7 @@ public class Team {
         this.players = players;
         this.throwCount = players.length;
         this.score = 0;
+        this.currentPlayerIndex = 0;
 
         // Initializes the enemyCups array depending on how many players are in the team
         switch (players.length) {
@@ -90,7 +92,7 @@ public class Team {
     }
 
     /**
-     * Returns ammount of throws left.
+     * Returns amount of throws left.
      * @return field throwCount
      */
     public int getThrowCount() {
@@ -99,7 +101,7 @@ public class Team {
 
     /**
      * Increases the score of the team by parameterized value.
-     * @param n ammount to increment
+     * @param n amount to increment
      */
     public void incrementScore(int n) {
         score = score + n;
@@ -109,50 +111,65 @@ public class Team {
      * Marks the cup in the parameter as hit.
      * @param index the index of the cup that was hit
      */
-    public void hitCup(int index) {
-        if (enemyCups[index] == null) {
-            System.out.println("enemyCups[index] == null; nullpointer exception here");
-            return;
-        }
-
-        if (enemyCups[index].status()) {
-            System.out.println("This cup is already hit");
-            return;
+    public void hitCup(int index, boolean bounced) {
+        if(bounced) {
+            incrementScore(1);
         }
 
         if (enemyCups[index].thisRound()) {
             incrementScore(2);
-        } // Lägg till studs
+        }
         else {
             incrementScore(1);
         }
     }
 
     /**
-     * Throws a ball and does other calls depending on what the ball hit.
-     * If the ball hits a cup hitCup() i called upon.
-     * If not, then nothing more is done
-     * @param type of throw, "hit" or "miss"
+     * Resets the player index to 0.
      */
-    public void throwBall(String type) {
-        //Fixmeh
-        //Enum?
-        //Ny klass med typer?
-        //Strängar?
-        //Ta med index som parameter?
-        //Index för miss?
-        if (type.equals("miss")) {
-            System.out.println("You missed");
-            return;
+    public void resetPlayerIndex() {
+        currentPlayerIndex = 0;
+    }
+
+    /**
+     * Resets the throw count to amount of players.
+     */
+    public void resetThrowCount() {
+        throwCount = players.length;
+    }
+
+    /**
+     * Throws a ball and gives the next player his/her turn. Reduces the throw count.
+     * Checks if the throw count has reached 0, in which case the team is done.
+     * Makes a call onto hitBall() if no a miss is registered.
+     * @param index index of hit cup or -1 if miss.
+     * @return boolean false if the team has no remaining throws, true otherwise.
+     */
+    public boolean throwBall(int index, boolean bounced) {
+        String bounceString;
+
+        if (bounced) {
+            bounceString = "but at least it was a nice bounce attempt";
+        } else {
+            bounceString = "";
         }
 
-        //if(type.equals("bounce"))  ??
-
-        if(type.equals("hit")) {
-          //  hitCup(index)
+        if (index == -1) {
+            System.out.println(players[currentPlayerIndex].getName() + " missed " + bounceString);
+            players[currentPlayerIndex].newMiss();
+            incrementScore(1);
+        } else {
+            System.out.println(players[currentPlayerIndex].getName() + " hit cup nr: " + (index + 1));
+            hitCup(index, bounced);
+            players[currentPlayerIndex].newHit();
         }
-
+        currentPlayerIndex++;
         throwCount--;
+        if (throwCount == 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }
