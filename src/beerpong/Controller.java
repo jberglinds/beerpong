@@ -39,6 +39,8 @@ public class Controller {
         currentTeamIndex = 0;
     }
 
+
+
     public void strobe(Event event) {
         FadeTransition ft = new FadeTransition(Duration.millis(10), bg);
         ft.setFromValue(1.0);
@@ -267,5 +269,8 @@ public class Controller {
                 }
             }
         }
+    }
+
+    public void startGame(ActionEvent actionEvent) {
     }
 }

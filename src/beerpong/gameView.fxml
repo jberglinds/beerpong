@@ -79,7 +79,7 @@
          </font>
       </Label>
       <TextFlow fx:id="eventFlow" layoutX="200.0" layoutY="312.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 2;" textAlignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="320.0" />
-      <AnchorPane fx:id="gamefield" layoutY="107.0" prefHeight="200.0" prefWidth="600.0" style="-fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="110.0">
+      <AnchorPane fx:id="gamefield" layoutY="107.0" prefHeight="200.0" prefWidth="600.0" style="-fx-border-color: white; -fx-border-radius: 10; -fx-border-width: 2;" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="110.0">
          <children>
             <HBox alignment="CENTER" prefHeight="18.0" prefWidth="24.0" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="288.0" AnchorPane.rightAnchor="288.0" AnchorPane.topAnchor="91.0">
                <children>
