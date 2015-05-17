@@ -80,6 +80,18 @@ public class Controller {
         t2p2_2v2.textProperty().bindBidirectional(t2p2_3v3.textProperty());
     }
 
+    public void reset(ActionEvent actionEvent) {
+        gameName1.setText("");
+        t1_2v2.setText("");
+        t2_2v2.setText("");
+        t1p1_3v3.setText("");
+        t1p2_3v3.setText("");
+        t1p3_3v3.setText("");
+        t2p1_3v3.setText("");
+        t2p2_3v3.setText("");
+        t2p3_3v3.setText("");
+    }
+
     /***********
      gameView.fxml
      ************/
@@ -313,6 +325,7 @@ public class Controller {
             }
         }
     }
+
 
 
 }
