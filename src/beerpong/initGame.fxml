@@ -47,7 +47,7 @@
                         </Text>
                         <TextField fx:id="p1_1v1" alignment="CENTER" promptText="Player 1" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                         <TextField fx:id="p2_1v1" alignment="CENTER" promptText="Player 2" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                        <Button mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" text="Start game!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Button fx:id="start1v1" mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" text="Start game!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                         <Button mnemonicParsing="false" onAction="#reset" text="Reset fields" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="10.0" />
@@ -104,7 +104,7 @@
                               <Insets top="60.0" />
                            </GridPane.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" text="Start game!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Button fx:id="start2v2" mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" text="Start game!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                         <Button mnemonicParsing="false" onAction="#reset" text="Reset fields" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="10.0" />
@@ -190,7 +190,7 @@
                               <Insets top="120.0" />
                            </GridPane.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" text="Start game!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Button fx:id="start3v3" mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" text="Start game!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                         <Button mnemonicParsing="false" onAction="#reset" text="Reset fields" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                            <GridPane.margin>
                               <Insets bottom="10.0" right="10.0" />
