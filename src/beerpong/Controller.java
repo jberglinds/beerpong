@@ -4,6 +4,7 @@ import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -16,8 +17,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.awt.*;
+import java.awt.TextField;
 
 public class Controller {
+
+    public Scene nextScene;
 
     public AnchorPane bg;
     public Label gameName;
@@ -39,7 +43,46 @@ public class Controller {
         currentTeamIndex = 0;
     }
 
+    public void setNextScene (Scene scene){
+        nextScene = scene;
+    }
 
+    /***********
+     initGame.fxml
+     ************/
+
+    public javafx.scene.control.TextField gameName1, gameName2, gameName3, p1_1v1, p2_1v1, t1_2v2, t2_2v2, t1p1_2v2, t1p2_2v2, t2p1_2v2, t2p2_2v2, t1_3v3, t2_3v3, t1p1_3v3, t1p2_3v3, t1p3_3v3, t2p1_3v3, t2p2_3v3, t2p3_3v3;
+
+    public void startGame(ActionEvent event) {
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        //TODO: Code to create teams and update graphics.
+
+        window.setScene(nextScene);
+
+    }
+
+    public void syncTextFields(){
+        // Sync gamename
+        gameName1.textProperty().bindBidirectional(gameName2.textProperty());
+        gameName2.textProperty().bindBidirectional(gameName3.textProperty());
+
+        // Sync teamnames
+        t1_2v2.textProperty().bindBidirectional(t1_3v3.textProperty());
+        t2_2v2.textProperty().bindBidirectional(t2_3v3.textProperty());
+
+        // Sync playernames
+        p1_1v1.textProperty().bindBidirectional(t1p1_2v2.textProperty());
+        p1_1v1.textProperty().bindBidirectional(t1p1_3v3.textProperty());
+        p2_1v1.textProperty().bindBidirectional(t2p1_2v2.textProperty());
+        p2_1v1.textProperty().bindBidirectional(t2p1_3v3.textProperty());
+        t1p2_2v2.textProperty().bindBidirectional(t1p2_3v3.textProperty());
+        t2p2_2v2.textProperty().bindBidirectional(t2p2_3v3.textProperty());
+    }
+
+    /***********
+     gameView.fxml
+     ************/
 
     public void strobe(Event event) {
         FadeTransition ft = new FadeTransition(Duration.millis(10), bg);
@@ -271,6 +314,5 @@ public class Controller {
         }
     }
 
-    public void startGame(ActionEvent actionEvent) {
-    }
+
 }

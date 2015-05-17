@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" side="BOTTOM" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="beerpong.Controller">
+<TabPane fx:id="init" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" side="BOTTOM" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="beerpong.Controller">
   <tabs>
     <Tab text="1 player teams">
       <content>
@@ -45,9 +45,9 @@
                               <Insets top="20.0" />
                            </GridPane.margin>
                         </Text>
-                        <TextField fx:id="player1" alignment="CENTER" promptText="Player 1" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                        <TextField fx:id="player2" alignment="CENTER" promptText="Player 2" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                        <Button fx:id="start" mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" text="Start game!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <TextField fx:id="p1_1v1" alignment="CENTER" promptText="Player 1" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                        <TextField fx:id="p2_1v1" alignment="CENTER" promptText="Player 2" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                        <Button mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" text="Start game!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children></AnchorPane>
@@ -76,10 +76,10 @@
                               <Insets top="20.0" />
                            </GridPane.margin>
                         </Text>
-                        <TextField fx:id="team1" alignment="CENTER" promptText="Teamname 1" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                        <TextField fx:id="team2" alignment="CENTER" promptText="Teamname 2" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                        <TextField fx:id="team1player1" alignment="CENTER" promptText="Player 1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="team1player2" alignment="CENTER" promptText="Player 2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <TextField fx:id="t1_2v2" alignment="CENTER" promptText="Teamname 1" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                        <TextField fx:id="t2_2v2" alignment="CENTER" promptText="Teamname 2" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                        <TextField fx:id="t1p1_2v2" alignment="CENTER" promptText="Player 1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="t1p2_2v2" alignment="CENTER" promptText="Player 2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -87,8 +87,8 @@
                               <Insets top="60.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="team2player1" alignment="CENTER" promptText="Player 1" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <TextField fx:id="team2player2" alignment="CENTER" promptText="Player 2" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                        <TextField fx:id="t2p1_2v2" alignment="CENTER" promptText="Player 1" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <TextField fx:id="t2p2_2v2" alignment="CENTER" promptText="Player 2" GridPane.columnIndex="3" GridPane.rowIndex="2">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -96,7 +96,7 @@
                               <Insets top="60.0" />
                            </GridPane.margin>
                         </TextField>
-                        <Button fx:id="start" mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" text="Start game!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" text="Start game!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
@@ -138,10 +138,10 @@
                               <Insets top="20.0" />
                            </GridPane.margin>
                         </Text>
-                        <TextField fx:id="team1" alignment="CENTER" promptText="Teamname 1" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                        <TextField fx:id="team2" alignment="CENTER" promptText="Teamname 2" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                        <TextField fx:id="team1player1" alignment="CENTER" promptText="Player 1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="team1player2" alignment="CENTER" promptText="Player 2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <TextField fx:id="t1_3v3" alignment="CENTER" promptText="Teamname 1" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                        <TextField fx:id="t2_3v3" alignment="CENTER" promptText="Teamname 2" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                        <TextField fx:id="t1p1_3v3" alignment="CENTER" promptText="Player 1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="t1p2_3v3" alignment="CENTER" promptText="Player 2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -149,7 +149,7 @@
                               <Insets top="60.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="team1player3" alignment="CENTER" promptText="Player 3" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <TextField fx:id="t1p3_3v3" alignment="CENTER" promptText="Player 3" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -157,8 +157,8 @@
                               <Insets top="120.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="team2player1" alignment="CENTER" promptText="Player 1" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <TextField fx:id="team2player2" alignment="CENTER" promptText="Player 2" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                        <TextField fx:id="t2p1_3v3" alignment="CENTER" promptText="Player 1" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <TextField fx:id="t2p2_3v3" alignment="CENTER" promptText="Player 2" GridPane.columnIndex="3" GridPane.rowIndex="2">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -166,7 +166,7 @@
                               <Insets top="60.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="team2player3" alignment="CENTER" promptText="Player 3" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                        <TextField fx:id="t2p3_3v3" alignment="CENTER" promptText="Player 3" GridPane.columnIndex="3" GridPane.rowIndex="2">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -174,7 +174,7 @@
                               <Insets top="120.0" />
                            </GridPane.margin>
                         </TextField>
-                        <Button fx:id="start" mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" text="Start game!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" text="Start game!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />

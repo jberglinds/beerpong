@@ -1,36 +1,40 @@
 package beerpong;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.net.URL;
 
 public class Main extends Application {
 
     @Override
-    public void start(final Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("gameView.fxml"));
-        primaryStage.setTitle("Beer Pong LIVE");
-        primaryStage.setScene(new Scene(root, 800, 400));
-        primaryStage.show();
+    public void start(final Stage stage) throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader();
 
-        Parent initGame = FXMLLoader.load(getClass().getResource("initGame.fxml"));
-        final Stage secondaryStage = new Stage();
-        secondaryStage.setScene(new Scene(initGame, 800, 400));
-        secondaryStage.show();
+        URL location = getClass().getResource("initGame.fxml");
+        fxmlLoader.setLocation(location);
+        fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
+        Parent root = (Parent) fxmlLoader.load(location.openStream());
+        Scene scene = new Scene(root, 800, 400);
+
+        stage.setScene(scene);
+        stage.show();
+
+        Controller controller = fxmlLoader.getController();
+
+        Parent initGame = fxmlLoader.load(getClass().getResource("gameView.fxml"));
+        controller.setNextScene(new Scene(initGame, 800, 400));
+        controller.syncTextFields();
 
     }
 
     public static void main(String[] args) {
         launch(args);
     }
+
+
 }
