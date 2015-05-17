@@ -51,6 +51,7 @@ public class Controller {
      initGame.fxml
      ************/
 
+    public TabPane init;
     public javafx.scene.control.TextField gameName1, gameName2, gameName3, p1_1v1, p2_1v1, t1_2v2, t2_2v2, t1p1_2v2, t1p2_2v2, t2p1_2v2, t2p2_2v2, t1_3v3, t2_3v3, t1p1_3v3, t1p2_3v3, t1p3_3v3, t2p1_3v3, t2p2_3v3, t2p3_3v3;
 
     public void startGame(ActionEvent event) {
@@ -78,6 +79,8 @@ public class Controller {
         p2_1v1.textProperty().bindBidirectional(t2p1_3v3.textProperty());
         t1p2_2v2.textProperty().bindBidirectional(t1p2_3v3.textProperty());
         t2p2_2v2.textProperty().bindBidirectional(t2p2_3v3.textProperty());
+
+        init.requestFocus(); // Sets the focus away from first textfield so that the user can see the placeholder text.
     }
 
     public void reset(ActionEvent actionEvent) {

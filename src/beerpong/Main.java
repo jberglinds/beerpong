@@ -15,6 +15,8 @@ public class Main extends Application {
     public void start(final Stage stage) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader();
 
+        stage.setTitle("Beer Pong!");
+
         URL location = getClass().getResource("initGame.fxml");
         fxmlLoader.setLocation(location);
         fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
@@ -23,12 +25,15 @@ public class Main extends Application {
 
         stage.setScene(scene);
         stage.show();
+        stage.requestFocus();
 
         Controller controller = fxmlLoader.getController();
 
         Parent initGame = fxmlLoader.load(getClass().getResource("gameView.fxml"));
         controller.setNextScene(new Scene(initGame, 800, 400));
         controller.syncTextFields();
+
+
 
     }
 
