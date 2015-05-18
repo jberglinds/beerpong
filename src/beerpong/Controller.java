@@ -189,5 +189,29 @@ public class Controller implements Initializable{
         game = Game.getInstance();
 
         gameName.setText(game.getGameName());
+
+        Team[] teams = game.getTeams();
+        team1name.setText(teams[0].getTeamName());
+        team2name.setText(teams[1].getTeamName());
+
+        if (teams[0].getPlayers().length == 2){
+            Player[] players = teams[0].getPlayers();
+            player11.setText(players[0].getName());
+            player12.setText(players[1].getName());
+
+            players = teams[1].getPlayers();
+            player21.setText(players[0].getName());
+            player22.setText(players[1].getName());
+        } else if (teams[0].getPlayers().length == 3){
+            Player[] players = teams[0].getPlayers();
+            player11.setText(players[0].getName());
+            player12.setText(players[1].getName());
+            player13.setText(players[2].getName());
+
+            players = teams[1].getPlayers();
+            player21.setText(players[0].getName());
+            player22.setText(players[1].getName());
+            player23.setText(players[2].getName());
+        }
     }
 }
