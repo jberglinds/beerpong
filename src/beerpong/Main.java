@@ -25,15 +25,6 @@ public class Main extends Application {
 
         stage.setScene(scene);
         stage.show();
-        stage.requestFocus();
-
-        Controller controller = fxmlLoader.getController();
-
-        Parent initGame = fxmlLoader.load(getClass().getResource("gameView.fxml"));
-        controller.setNextScene(new Scene(initGame, 800, 400));
-        controller.syncTextFields();
-
-
 
     }
 
