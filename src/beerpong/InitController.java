@@ -45,7 +45,7 @@ public class InitController implements Initializable{
             } else {
                 game.setGameName(gameName2.getText());
                 game.setTeam1(t1_2v2.getText(), new String[]{t1p1_2v2.getText(), t1p2_2v2.getText()});
-                game.setTeam1(t2_2v2.getText(), new String[]{t2p1_2v2.getText(), t2p2_2v2.getText()});
+                game.setTeam2(t2_2v2.getText(), new String[]{t2p1_2v2.getText(), t2p2_2v2.getText()});
 
                 switchScene(event);
             }
@@ -55,7 +55,7 @@ public class InitController implements Initializable{
             } else {
                 game.setGameName(gameName3.getText());
                 game.setTeam1(t1_3v3.getText(), new String[]{t1p1_3v3.getText(), t1p2_3v3.getText(), t1p3_3v3.getText()});
-                game.setTeam1(t2_3v3.getText(), new String[]{t2p1_3v3.getText(), t2p2_3v3.getText(), t2p3_3v3.getText()});
+                game.setTeam2(t2_3v3.getText(), new String[]{t2p1_3v3.getText(), t2p2_3v3.getText(), t2p3_3v3.getText()});
 
                 switchScene(event);
             }
