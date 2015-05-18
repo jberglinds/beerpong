@@ -12,18 +12,6 @@ public class Game {
     private static Game instance = new Game();
 
     public Game() {
-        String teamName = "Dick";
-        String[] players = {"Emil", "Jonathan", "Micke"};
-        Team teamOne = new Team(teamName, players);
-
-
-        String teamName2 = "Snok";
-        String[] players2 = {"Mutte", "Jompa", "Abs"};
-        Team teamTwo = new Team(teamName2, players2);
-
-        teams[0] = teamOne;
-        teams[1] = teamTwo;
-
     }
 
     public static Game getInstance(){
