@@ -24,15 +24,9 @@ public class Controller implements Initializable{
     public Label player11, player12, player13;
     public Label player21, player22, player23;
 
-    private Team teamOne;
-    private Team teamTwo;
     private boolean bounce;
-    private Team[] teams;
-    private int currentTeamIndex;
 
     public Controller() {
-        teams = new Team[2];
-        currentTeamIndex = 0;
     }
 
 
@@ -60,24 +54,7 @@ public class Controller implements Initializable{
      * @param event a click on the miss button.
      */
     public void miss(Event event) {
-        boolean b  = teams[currentTeamIndex].throwBall(-1, bounce);
-
-        if (currentTeamIndex == 0) {
-            team1score.setText(Integer.toString(teams[currentTeamIndex].getScore()));
-        } else {
-            team2score.setText(Integer.toString(teams[currentTeamIndex].getScore()));
-        }
-
-        if (!b) {
-            if (currentTeamIndex == 0) {
-                currentTeamIndex = 1;
-            } else {
-                currentTeamIndex = 0;
-            }
-            teams[currentTeamIndex].resetPlayerIndex();
-            teams[currentTeamIndex].resetThrowCount();
-            System.out.println("It is time for " + teams[currentTeamIndex].getTeamName() + " to play");
-        }
+        game.miss();
     }
 
 
@@ -89,97 +66,50 @@ public class Controller implements Initializable{
      * @param event A click on any cup in play at that particular time.
      */
     public void hit(Event event) {
-        //If the right team is playing we only handle left side cups
-        if (currentTeamIndex == 1) {
-            int index = 0;
-            if (event.getSource() == oneLeft) {
-                index = 1;
-            }
-            else if (event.getSource() == twoLeft) {
-                index = 2;
-            }
-            else if (event.getSource() == threeLeft) {
-                index = 3;
-            }
-            else if (event.getSource() == fourLeft) {
-                index = 4;
-            }
-            else if (event.getSource() == fiveLeft) {
-                index = 5;
-            }
-            else if (event.getSource() == sixLeft) {
-                index = 6;
-            }
-            else if (event.getSource() == sevenLeft) {
-                index = 7;
-            }
-            else if (event.getSource() == eightLeft) {
-                index = 8;
-            }
-            else if (event.getSource() == nineLeft) {
-                index = 9;
-            }
-            else if (event.getSource() == tenLeft) {
-                index = 10;
-            }
-
-            if (index != 0) {
-                boolean b = teams[currentTeamIndex].throwBall(index-1, bounce);
-                team2score.setText(Integer.toString(teams[currentTeamIndex].getScore()));
-
-                if (!b) {
-                    currentTeamIndex = 0;
-                    teams[currentTeamIndex].resetPlayerIndex();
-                    teams[currentTeamIndex].resetThrowCount();
-                    System.out.println("It is time for " + teams[currentTeamIndex].getTeamName() + " to play");
-                }
-            }
-        } else { //If the left side is playing we only handle right side cups
-            int index = 0;
-
-            if (event.getSource() == oneRight) {
-                index = 1;
-            }
-            else if (event.getSource() == twoRight) {
-                index = 2;
-            }
-            else if (event.getSource() == threeRight) {
-                index = 3;
-            }
-            else if (event.getSource() == fourRight) {
-                index = 4;
-            }
-            else if (event.getSource() == fiveRight) {
-                index = 5;
-            }
-            else if (event.getSource() == sixRight) {
-                index = 6;
-            }
-            else if (event.getSource() == sevenRight) {
-                index = 7;
-            }
-            else if (event.getSource() == eightRight) {
-                index = 8;
-            }
-            else if (event.getSource() == nineRight) {
-                index = 9;
-            }
-            else if (event.getSource() == tenRight) {
-                index = 10;
-            }
-
-            if (index != 0) {
-                boolean b = teams[currentTeamIndex].throwBall(index-1, bounce);
-                team1score.setText(Integer.toString(teams[currentTeamIndex].getScore()));
-
-                if (!b) {
-                    currentTeamIndex = 1;
-                    teams[currentTeamIndex].resetPlayerIndex();
-                    teams[currentTeamIndex].resetThrowCount();
-                    System.out.println("It is time for " + teams[currentTeamIndex].getTeamName() + " to play");
-                }
-            }
+        if (event.getSource() == oneLeft) {
+            game.hit(0, bounce, "Left");
+        } else if (event.getSource() == twoLeft) {
+            game.hit(1, bounce, "Left");
+        } else if (event.getSource() == threeLeft) {
+            game.hit(2, bounce, "Left");
+        } else if (event.getSource() == fourLeft) {
+            game.hit(3, bounce, "Left");
+        } else if (event.getSource() == fiveLeft) {
+            game.hit(4, bounce, "Left");
+        } else if (event.getSource() == sixLeft) {
+            game.hit(5, bounce, "Left");
+        } else if (event.getSource() == sevenLeft) {
+            game.hit(6, bounce, "Left");
+        } else if (event.getSource() == eightLeft) {
+            game.hit(7, bounce, "Left");
+        } else if (event.getSource() == nineLeft) {
+            game.hit(8, bounce, "Left");
+        } else if (event.getSource() == tenLeft) {
+            game.hit(9, bounce, "Left");
+        } else if (event.getSource() == oneRight) {
+            game.hit(0, bounce, "Right");
+        } else if (event.getSource() == twoRight) {
+            game.hit(1, bounce, "Right");
+        } else if (event.getSource() == threeRight) {
+            game.hit(2, bounce, "Right");
+        } else if (event.getSource() == fourRight) {
+            game.hit(3, bounce, "Right");
+        } else if (event.getSource() == fiveRight) {
+            game.hit(4, bounce, "Right");
+        } else if (event.getSource() == sixRight) {
+            game.hit(5, bounce, "Right");
+        } else if (event.getSource() == sevenRight) {
+            game.hit(6, bounce, "Right");
+        } else if (event.getSource() == eightRight) {
+            game.hit(7, bounce, "Right");
+        } else if (event.getSource() == nineRight) {
+            game.hit(8, bounce, "Right");
+        } else if (event.getSource() == tenRight) {
+            game.hit(9, bounce, "Right");
         }
+        int[] scores = game.getScores();
+        team1score.setText(Integer.toString(scores[0]));
+        team2score.setText(Integer.toString(scores[1]));
     }
 
 

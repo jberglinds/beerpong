@@ -1,5 +1,7 @@
 package beerpong;
 
+import java.util.ArrayList;
+
 /**
  * Class representing a team in a beer pong game.
  * For keeping track on each teams round in the game.
@@ -14,7 +16,7 @@ public class Team {
     private int score;
     private int throwCount;
     private int currentPlayerIndex;
-
+    private ArrayList<Integer> hitsThisRound = new ArrayList<Integer>();
 
     /**
      * Initializes all of the classes fields.
@@ -100,19 +102,34 @@ public class Team {
     }
 
     /**
-     * Marks the cup in the parameter as hit.
+     * Marks the cup in the parameter as hit this round or increments the score of
+     * 2 if it has already been hit.
      * @param index the index of the cup that was hit
      */
     public void hitCup(int index, boolean bounced) {
+        if (enemyCups[index].status()) {
+            return;
+        }
+
+        String bounceString;
+
+        if (bounced) {
+            bounceString = " with a sweet bounce.";
+        } else {
+            bounceString = "";
+        }
+
         if(bounced) {
             incrementScore(1);
         }
 
         if (enemyCups[index].thisRound()) {
+            System.out.println(players[currentPlayerIndex].getName() + " hit the already hit cup nr " + (index + 1) + bounceString);
             incrementScore(2);
-        }
-        else {
+        } else {
+            System.out.println(players[currentPlayerIndex].getName() + " hit cup nr " + (index + 1) + bounceString);
             enemyCups[index].hit();
+            hitsThisRound.add(index);
             incrementScore(1);
         }
     }
@@ -132,6 +149,18 @@ public class Team {
     }
 
     /**
+     * Marks all cups hit the previous round as hit and therefor unavailable.
+     * Resets the array of cups hit this round.
+     */
+    public void resetArray() {
+        for (int index : hitsThisRound) {
+            System.out.println(index);
+            enemyCups[index].hitAfterRound();
+        }
+        hitsThisRound.clear();
+    }
+
+    /**
      * Throws a ball and gives the next player his/her turn. Reduces the throw count.
      * Checks if the throw count has reached 0, in which case the team is done.
      * Makes a call onto hitBall() if no a miss is registered.
@@ -139,19 +168,10 @@ public class Team {
      * @return boolean false if the team has no remaining throws, true otherwise.
      */
     public boolean throwBall(int index, boolean bounced) {
-/*        String bounceString;
-
-        if (bounced) {
-            bounceString = " with a sweet bounce.";
-        } else {
-            bounceString = "";
-        }*/
-
         if (index == -1) {
-            //System.out.println(players[currentPlayerIndex].getName() + " missed.");
+            System.out.println(players[currentPlayerIndex].getName() + " missed.");
             players[currentPlayerIndex].newMiss();
         } else {
-            //System.out.println(players[currentPlayerIndex].getName() + " hit cup nr: " + (index + 1) + bounceString);
             hitCup(index, bounced);
             players[currentPlayerIndex].newHit();
         }
