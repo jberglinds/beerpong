@@ -16,25 +16,17 @@ public class Team {
     private int currentPlayerIndex;
 
 
-    public static void main(String[] args) {
-        Player[] p = new Player[1];
-        p[0] = new Player("jaja");
-        Team t = new Team("lolol", p);
-
-        System.out.println(t.getTeamName());
-        System.out.println(t.getScore());
-        System.out.println(t.getThrowCount());
-
-    }
-
     /**
      * Initializes all of the classes fields.
      * @param name The name of the team.
      * @param players A list of all players in the team.
      */
-    public Team(String name, Player[] players) {
+    public Team(String name, String[] players) {
         this.teamName = name;
-        this.players = players;
+        this.players = new Player[players.length];
+        for (int i = 0; i < players.length; i++){
+            this.players[i] = new Player(players[i]);
+        }
         this.throwCount = players.length;
         this.score = 0;
         this.currentPlayerIndex = 0;
@@ -120,6 +112,7 @@ public class Team {
             incrementScore(2);
         }
         else {
+            enemyCups[index].hit();
             incrementScore(1);
         }
     }
@@ -146,20 +139,19 @@ public class Team {
      * @return boolean false if the team has no remaining throws, true otherwise.
      */
     public boolean throwBall(int index, boolean bounced) {
-        String bounceString;
+/*        String bounceString;
 
         if (bounced) {
-            bounceString = "but at least it was a nice bounce attempt";
+            bounceString = " with a sweet bounce.";
         } else {
             bounceString = "";
-        }
+        }*/
 
         if (index == -1) {
-            System.out.println(players[currentPlayerIndex].getName() + " missed " + bounceString);
+            //System.out.println(players[currentPlayerIndex].getName() + " missed.");
             players[currentPlayerIndex].newMiss();
-            incrementScore(1);
         } else {
-            System.out.println(players[currentPlayerIndex].getName() + " hit cup nr: " + (index + 1));
+            //System.out.println(players[currentPlayerIndex].getName() + " hit cup nr: " + (index + 1) + bounceString);
             hitCup(index, bounced);
             players[currentPlayerIndex].newHit();
         }

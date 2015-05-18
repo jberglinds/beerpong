@@ -1,23 +1,19 @@
 package beerpong;
 
 import javafx.animation.FadeTransition;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.Button;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.awt.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable{
+
+    public Game game;
 
     public AnchorPane bg;
     public Label gameName;
@@ -38,6 +34,7 @@ public class Controller {
         teams = new Team[2];
         currentTeamIndex = 0;
     }
+
 
     public void strobe(Event event) {
         FadeTransition ft = new FadeTransition(Duration.millis(10), bg);
@@ -83,120 +80,114 @@ public class Controller {
         }
     }
 
+
     /**
-     * Takes in 4 parameters, Team name and the names of all players. From this
-     * team one is created.
-     * @param event Clicking on the team name
+     * If a hit is registered on the graphic board a call will be made to
+     * the current team representing a hit. If throwBall() returns false the
+     * team has used all their throws and it will be the other teams turn.
+     * Only the enemies cups are available for play at any time.
+     * @param event A click on any cup in play at that particular time.
      */
-    public void createTeam(Event event) {
-        final Stage primaryStage = new Stage();
-        Pane pane = new Pane();
-        Button b = new Button("Done");
-        b.setTranslateX(150);
-        b.setTranslateY(160);
+    public void hit(Event event) {
+        //If the right team is playing we only handle left side cups
+        if (currentTeamIndex == 1) {
+            int index = 0;
+            if (event.getSource() == oneLeft) {
+                index = 1;
+            }
+            else if (event.getSource() == twoLeft) {
+                index = 2;
+            }
+            else if (event.getSource() == threeLeft) {
+                index = 3;
+            }
+            else if (event.getSource() == fourLeft) {
+                index = 4;
+            }
+            else if (event.getSource() == fiveLeft) {
+                index = 5;
+            }
+            else if (event.getSource() == sixLeft) {
+                index = 6;
+            }
+            else if (event.getSource() == sevenLeft) {
+                index = 7;
+            }
+            else if (event.getSource() == eightLeft) {
+                index = 8;
+            }
+            else if (event.getSource() == nineLeft) {
+                index = 9;
+            }
+            else if (event.getSource() == tenLeft) {
+                index = 10;
+            }
 
-        //Team name field
-        final javafx.scene.control.TextField team = new javafx.scene.control.TextField();
-        team.setText("What is your team name");
-        team.setTranslateX(100);
-        team.setTranslateY(10);
-        //Player one field
-        final javafx.scene.control.TextField player1 = new javafx.scene.control.TextField();
-        player1.setText("Player 1 name");
-        player1.setTranslateX(100);
-        player1.setTranslateY(50);
-        //Player two field
-        final javafx.scene.control.TextField player2 = new javafx.scene.control.TextField();
-        player2.setText("Player 2 name");
-        player2.setTranslateX(100);
-        player2.setTranslateY(90);
-        //Player three field
-        final javafx.scene.control.TextField player3 = new javafx.scene.control.TextField();
-        player3.setText("Player 3 name");
-        player3.setTranslateX(100);
-        player3.setTranslateY(130);
+            if (index != 0) {
+                boolean b = teams[currentTeamIndex].throwBall(index-1, bounce);
+                team2score.setText(Integer.toString(teams[currentTeamIndex].getScore()));
 
-        //On click of button
-        b.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        String teamName = team.getText();
-                        Player playerOne = new Player(player1.getText());
-                        Player playerTwo = new Player(player2.getText());
-                        Player playerThree = new Player(player3.getText());
-                        Player[] players = {playerOne, playerTwo, playerThree};
-                        primaryStage.close();
-                        team1name.setText(teamName);
-                        player11.setText(playerOne.getName());
-                        player12.setText(playerTwo.getName());
-                        player13.setText(playerThree.getName());
-                        teamOne = new Team(teamName, players);
-                        teams[0] = teamOne;
-                    }
-                });
+                if (!b) {
+                    currentTeamIndex = 0;
+                    teams[currentTeamIndex].resetPlayerIndex();
+                    teams[currentTeamIndex].resetThrowCount();
+                    System.out.println("It is time for " + teams[currentTeamIndex].getTeamName() + " to play");
+                }
+            }
+        } else { //If the left side is playing we only handle right side cups
+            int index = 0;
 
-        pane.getChildren().addAll(team, player1, player2, player3, b);
-        primaryStage.setScene(new Scene(pane, 400, 200));
-        primaryStage.show();
+            if (event.getSource() == oneRight) {
+                index = 1;
+            }
+            else if (event.getSource() == twoRight) {
+                index = 2;
+            }
+            else if (event.getSource() == threeRight) {
+                index = 3;
+            }
+            else if (event.getSource() == fourRight) {
+                index = 4;
+            }
+            else if (event.getSource() == fiveRight) {
+                index = 5;
+            }
+            else if (event.getSource() == sixRight) {
+                index = 6;
+            }
+            else if (event.getSource() == sevenRight) {
+                index = 7;
+            }
+            else if (event.getSource() == eightRight) {
+                index = 8;
+            }
+            else if (event.getSource() == nineRight) {
+                index = 9;
+            }
+            else if (event.getSource() == tenRight) {
+                index = 10;
+            }
+
+            if (index != 0) {
+                boolean b = teams[currentTeamIndex].throwBall(index-1, bounce);
+                team1score.setText(Integer.toString(teams[currentTeamIndex].getScore()));
+
+                if (!b) {
+                    currentTeamIndex = 1;
+                    teams[currentTeamIndex].resetPlayerIndex();
+                    teams[currentTeamIndex].resetThrowCount();
+                    System.out.println("It is time for " + teams[currentTeamIndex].getTeamName() + " to play");
+                }
+            }
+        }
     }
 
 
-    /**
-     * Takes in 4 parameters, Team name and the names of all players. From this
-     * team two is created.
-     * @param event Clicking on the teamn ame
-     */
-    public void createTeam2(Event event) {
-        final Stage primaryStage = new Stage();
-        Pane pane = new Pane();
-        Button b = new Button("Done");
-        b.setTranslateX(150);
-        b.setTranslateY(160);
+    //Update view from variables from game.
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        game = Game.getInstance();
 
-        //Team name field
-        final javafx.scene.control.TextField team = new javafx.scene.control.TextField();
-        team.setText("What is your team name");
-        team.setTranslateX(100);
-        team.setTranslateY(10);
-        //Player one field
-        final javafx.scene.control.TextField player1 = new javafx.scene.control.TextField();
-        player1.setText("Player 1 name");
-        player1.setTranslateX(100);
-        player1.setTranslateY(50);
-        //Player two field
-        final javafx.scene.control.TextField player2 = new javafx.scene.control.TextField();
-        player2.setText("Player 2 name");
-        player2.setTranslateX(100);
-        player2.setTranslateY(90);
-        //Player three field
-        final javafx.scene.control.TextField player3 = new javafx.scene.control.TextField();
-        player3.setText("Player 3 name");
-        player3.setTranslateX(100);
-        player3.setTranslateY(130);
-
-        //On click of button
-        b.setOnAction(
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        String teamName = team.getText();
-                        Player playerOne = new Player(player1.getText());
-                        Player playerTwo = new Player(player2.getText());
-                        Player playerThree = new Player(player3.getText());
-                        Player[] players = {playerOne, playerTwo, playerThree};
-                        primaryStage.close();
-                        team2name.setText(teamName);
-                        player21.setText(playerOne.getName());
-                        player22.setText(playerTwo.getName());
-                        player23.setText(playerThree.getName());
-                        teamTwo = new Team(teamName, players);
-                        teams[1] = teamTwo;
-                    }
-                });
-
-        pane.getChildren().addAll(team, player1, player2, player3, b);
-        primaryStage.setScene(new Scene(pane, 400, 200));
-        primaryStage.show();
+        gameName.setText(game.getGameName());
     }
 }
