@@ -81,6 +81,18 @@ public class EventLogger {
         messages.addLast(text);
     }
 
+    /**
+     * Logs a new information message to the eventlogger telling the team to remove more cups.
+     * @param team team that needs to remove more cups
+     * @param number number of cups that needs removal.
+     */
+    public void newRemoveCupsMessage(Team team, int number){
+        String string = team.getTeamName() + ", please remove " + number + " more cups.";
+        Text text = makeTextObject(string);
+        text.setFill(Paint.valueOf("blue"));
+        messages.addLast(text);
+    }
+
     private Text makeTextObject(String string){
         Text text = new Text(string + "\n");
         text.setFill(Paint.valueOf("white"));
