@@ -169,7 +169,11 @@ public class Team {
      */
     public boolean throwBall(int index, boolean bounced) {
         if (index == -1) {
-            System.out.println(players[currentPlayerIndex].getName() + " missed.");
+            if (bounced){
+                System.out.println(players[currentPlayerIndex].getName() + " missed with bounce.");
+            } else {
+                System.out.println(players[currentPlayerIndex].getName() + " missed.");
+            }
             players[currentPlayerIndex].newMiss();
         } else {
             hitCup(index, bounced);

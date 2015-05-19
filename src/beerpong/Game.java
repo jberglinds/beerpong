@@ -8,10 +8,12 @@ public class Game {
     private String gameName;
     private Team[] teams = new Team[2];
     private int currentTeamIndex;
+    private EventLogger eventLogger;
 
     private static Game instance = new Game();
 
     public Game() {
+        eventLogger = new EventLogger();
     }
 
     public static Game getInstance(){
@@ -60,13 +62,13 @@ public class Game {
                 }
                 teams[currentTeamIndex].resetPlayerIndex();
                 teams[currentTeamIndex].resetThrowCount();
-                System.out.println("It is time for " + teams[currentTeamIndex].getTeamName() + " to play");
+                eventLogger.newTimeToPlayMessage(teams[currentTeamIndex]);
             }
         }
     }
 
-    public void miss() {
-        boolean b = teams[currentTeamIndex].throwBall(-1, false);
+    public void miss(boolean bounced) {
+        boolean b = teams[currentTeamIndex].throwBall(-1, bounced);
 
         if (!b) {
             if (currentTeamIndex == 0) {
@@ -76,7 +78,11 @@ public class Game {
             }
             teams[currentTeamIndex].resetPlayerIndex();
             teams[currentTeamIndex].resetThrowCount();
-            System.out.println("It is time for " + teams[currentTeamIndex].getTeamName() + " to play");
+            eventLogger.newTimeToPlayMessage(teams[currentTeamIndex]);
         }
+    }
+
+    public EventLogger getEventLogger(){
+        return eventLogger;
     }
 }

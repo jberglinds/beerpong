@@ -4,8 +4,13 @@ import javafx.animation.FadeTransition;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -23,6 +28,9 @@ public class Controller implements Initializable{
     public Label team1name, team2name;
     public Label player11, player12, player13;
     public Label player21, player22, player23;
+
+    public ScrollPane scrollPane;
+    public TextFlow eventFlow;
 
     private boolean bounce;
 
@@ -54,7 +62,8 @@ public class Controller implements Initializable{
      * @param event a click on the miss button.
      */
     public void miss(Event event) {
-        game.miss();
+        game.miss(bounce);
+        updateEventWall();
     }
 
 
@@ -107,9 +116,22 @@ public class Controller implements Initializable{
         } else if (event.getSource() == tenRight) {
             game.hit(9, bounce, "Right");
         }
+
+        updateScores();
+        updateEventWall();
+    }
+
+    private void updateScores(){
         int[] scores = game.getScores();
         team1score.setText(Integer.toString(scores[0]));
         team2score.setText(Integer.toString(scores[1]));
+    }
+
+    private void updateEventWall(){
+        EventLogger events = game.getEventLogger();
+        while (events.containsMessages()){
+            eventFlow.getChildren().add(0, events.getMessage());
+        }
     }
 
 
@@ -143,5 +165,6 @@ public class Controller implements Initializable{
             player22.setText(players[1].getName());
             player23.setText(players[2].getName());
         }
+
     }
 }
