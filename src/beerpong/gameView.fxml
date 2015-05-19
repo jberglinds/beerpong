@@ -95,16 +95,16 @@
             </HBox>
             <Pane layoutX="443.0" layoutY="28.1" rotate="180.0" AnchorPane.rightAnchor="20.0">
                <children>
-                  <Circle fx:id="nineRight" fill="WHITE" layoutY="31.0" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="71.0" />
                   <Circle fx:id="oneRight" fill="WHITE" layoutX="75.0" layoutY="46.0" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="86.0" />
                   <Circle fx:id="sixRight" fill="WHITE" layoutX="25.0" layoutY="15.0" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="55.0" />
-                  <Circle fx:id="tenRight" fill="WHITE" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="40.0" />
-                  <Circle fx:id="twoRight" fill="WHITE" layoutX="50.0" layoutY="62.0" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="102.0" />
                   <Circle fx:id="fiveRight" fill="WHITE" layoutX="25.0" layoutY="46.0" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="86.0" />
                   <Circle fx:id="threeRight" fill="WHITE" layoutX="50.0" layoutY="31.0" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="71.0" />
                   <Circle fx:id="sevenRight" fill="WHITE" layoutY="93.0" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="133.0" />
                   <Circle fx:id="fourRight" fill="WHITE" layoutX="25.0" layoutY="77.0" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="117.0" />
                   <Circle fx:id="eightRight" fill="WHITE" layoutY="62.0" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="102.0" />
+                  <Circle fx:id="twoRight" fill="WHITE" layoutX="50.0" layoutY="62.0" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="102.0" />
+                  <Circle fx:id="tenRight" fill="WHITE" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="40.0" />
+                  <Circle fx:id="nineRight" fill="WHITE" layoutY="31.0" onMouseClicked="#hit" radius="13.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="71.0" />
                </children>
             </Pane>
             <Pane layoutX="20.0" layoutY="55.0" AnchorPane.leftAnchor="20.0">

@@ -1,7 +1,5 @@
 package beerpong;
 
-import java.util.ArrayList;
-
 /**
  * Class representing a team in a beer pong game.
  * For keeping track on each teams round in the game.
@@ -13,10 +11,8 @@ public class Team {
 
     private Player[] players;
     private Cup[] enemyCups;
+    private int[] hitCups; //For keeping track on number of hits on a cup in a round.
     private int score;
-    private int throwCount;
-    private int currentPlayerIndex;
-    private ArrayList<Integer> hitsThisRound = new ArrayList<Integer>();
 
     /**
      * Initializes all of the classes fields.
@@ -29,9 +25,7 @@ public class Team {
         for (int i = 0; i < players.length; i++){
             this.players[i] = new Player(players[i]);
         }
-        this.throwCount = players.length;
         this.score = 0;
-        this.currentPlayerIndex = 0;
 
         // Initializes the enemyCups array depending on how many players are in the team
         switch (players.length) {
@@ -58,7 +52,7 @@ public class Team {
                 this.enemyCups = null;
                 break;
         }
-
+        hitCups = new int[enemyCups.length];
     }
 
     /**
@@ -85,13 +79,6 @@ public class Team {
         return score;
     }
 
-    /**
-     * Returns amount of throws left.
-     * @return field throwCount
-     */
-    public int getThrowCount() {
-        return throwCount;
-    }
 
     /**
      * Increases the score of the team by parameterized value.
@@ -101,91 +88,90 @@ public class Team {
         score = score + n;
     }
 
-    /**
-     * Marks the cup in the parameter as hit this round or increments the score of
-     * 2 if it has already been hit.
-     * @param index the index of the cup that was hit
-     */
-    public void hitCup(int index, boolean bounced) {
-        if (enemyCups[index].status()) {
-            return;
-        }
-
-        String bounceString;
-
-        if (bounced) {
-            bounceString = " with a sweet bounce.";
-        } else {
-            bounceString = "";
-        }
-
-        if(bounced) {
-            incrementScore(1);
-        }
-
-        if (enemyCups[index].thisRound()) {
-            System.out.println(players[currentPlayerIndex].getName() + " hit the already hit cup nr " + (index + 1) + bounceString);
-            incrementScore(2);
-        } else {
-            System.out.println(players[currentPlayerIndex].getName() + " hit cup nr " + (index + 1) + bounceString);
-            enemyCups[index].hit();
-            hitsThisRound.add(index);
-            incrementScore(1);
-        }
-    }
 
     /**
-     * Resets the player index to 0.
+     * Marks the cups as hit for real after a round and returns the number of individual cups that was hit.
+     * @return number of different cups that were hit.
      */
-    public void resetPlayerIndex() {
-        currentPlayerIndex = 0;
-    }
-
-    /**
-     * Resets the throw count to amount of players.
-     */
-    public void resetThrowCount() {
-        throwCount = players.length;
-    }
-
-    /**
-     * Marks all cups hit the previous round as hit and therefor unavailable.
-     * Resets the array of cups hit this round.
-     */
-    public void resetArray() {
-        for (int index : hitsThisRound) {
-            System.out.println(index);
-            enemyCups[index].hitAfterRound();
-        }
-        hitsThisRound.clear();
-    }
-
-    /**
-     * Throws a ball and gives the next player his/her turn. Reduces the throw count.
-     * Checks if the throw count has reached 0, in which case the team is done.
-     * Makes a call onto hitBall() if no a miss is registered.
-     * @param index index of hit cup or -1 if miss.
-     * @return boolean false if the team has no remaining throws, true otherwise.
-     */
-    public boolean throwBall(int index, boolean bounced) {
-        if (index == -1) {
-            if (bounced){
-                System.out.println(players[currentPlayerIndex].getName() + " missed with bounce.");
-            } else {
-                System.out.println(players[currentPlayerIndex].getName() + " missed.");
+    public int endTurn() {
+        //Markera de träffade muggarna som faktiskt träffade efter en rundas slut och returnera antalet olika träffade muggar.
+        int noOfDifferentCups = 0;
+        for (int i=0; i< hitCups.length; i++){
+            if (hitCups[i] > 0){
+                enemyCups[i].hit();
+                noOfDifferentCups++;
             }
-            players[currentPlayerIndex].newMiss();
-        } else {
-            hitCup(index, bounced);
-            players[currentPlayerIndex].newHit();
         }
-        currentPlayerIndex++;
-        throwCount--;
-        if (throwCount == 0) {
-            return false;
-        } else {
+        hitCups = new int[enemyCups.length];
+        return noOfDifferentCups;
+    }
+
+    /**
+     * Tries to hit one of the enemycups and adds a hit to the players statistics if it wasn't already hit.
+     * Returns a boolean with the status of the hit-attempt.
+     * @param index the index of the cup we want to try to hit.
+     * @param bounced bounce-attempt or not? (for player statistics)
+     * @param playerIndex the index of the player in the team that tries to hit the cup.
+     * @return true if the cup hasn't been hit in an previous round. false otherwise and nothing happens.
+     */
+    public boolean hitCup(int index, boolean bounced, int playerIndex) {
+
+        //Om den inte redan är träffad från en tidigare runda, gå vidare, annars returnera false.
+        if (!enemyCups[index].isHit()){
+
+            //Registrera träff på en spelare för statistik.
+            if (bounced){
+                players[playerIndex].newHitWithBounce();
+            } else {
+                players[playerIndex].newHit();
+            }
+
+            //Lägg till en träff på muggens index i en array.
+            hitCups[index]++;
             return true;
+
+        } else {
+            return false;
         }
+    }
+
+    /**
+     * Marks a cup as hit without giving a player credit for it. Used when more points are given than different cups hit to remove cups.
+     * @param index the index of the cup that we want to remove
+     * @return true if the cup wasn't already marked as hit from before, false otherwise.
+     */
+    public boolean removeCup(int index) {
+
+        //Om den inte redan är träffad sen en tidigare runda, gå vidare, annars returnera false.
+        if (!enemyCups[index].isHit()){
+            enemyCups[index].hit(); //Markera som träffad direkt och returnera true.
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Registers a new miss to the player statistics.
+     * @param bounced if it was a bounce-attempt or not.
+     * @param playerIndex the player that missed his throw.
+     */
+    public void newMiss(boolean bounced, int playerIndex){
+        if (bounced){
+            players[playerIndex].newMissWithBounce();
+        } else {
+            players[playerIndex].newMiss();
+        }
+    }
+
+    /**
+     * Returns a boolean with the status for the cup with given index.
+     * Used for checking how many points a specific hit should give in Game.java
+     * @param index the index of the cup we want to check on
+     * @return true if the cup has been hit before in this round, false otherwise.
+     */
+    public boolean hitThisRound(int index){
+        return hitCups[index] > 1;
     }
 
 }
