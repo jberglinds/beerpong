@@ -62,8 +62,11 @@ public class Game {
                 }
                 teams[currentTeamIndex].resetPlayerIndex();
                 teams[currentTeamIndex].resetThrowCount();
+
                 eventLogger.newTimeToPlayMessage(teams[currentTeamIndex]);
             }
+        } else {
+            eventLogger.newNotFinishedMessage(teams[currentTeamIndex]);
         }
     }
 
@@ -78,6 +81,7 @@ public class Game {
             }
             teams[currentTeamIndex].resetPlayerIndex();
             teams[currentTeamIndex].resetThrowCount();
+
             eventLogger.newTimeToPlayMessage(teams[currentTeamIndex]);
         }
     }

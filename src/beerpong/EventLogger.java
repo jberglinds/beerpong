@@ -70,6 +70,17 @@ public class EventLogger {
         messages.addLast(text);
     }
 
+    /**
+     * Logs a new warning message to the eventlogger saying that the team hasn't finished their turn.
+     * @param team the unfinished team
+     */
+    public void newNotFinishedMessage(Team team){
+        String string = team.getTeamName() + " is not yet finished...";
+        Text text = makeTextObject(string);
+        text.setFill(Paint.valueOf("red"));
+        messages.addLast(text);
+    }
+
     private Text makeTextObject(String string){
         Text text = new Text(string + "\n");
         text.setFill(Paint.valueOf("white"));
