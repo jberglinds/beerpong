@@ -14,7 +14,7 @@
    <children>
       <HBox alignment="TOP_CENTER" layoutX="81.0" layoutY="6.0" prefHeight="4.0" prefWidth="360.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="15.0">
          <children>
-            <Label fx:id="gameName" onMouseClicked="#strobe" text="Gamename" textFill="WHITE">
+            <Label fx:id="gameName" onMouseClicked="#easterEgg" text="Gamename" textFill="WHITE">
                <font>
                   <Font size="28.0" />
                </font>
@@ -164,12 +164,24 @@
                   <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Circle fx:id="bounceButton" fill="WHITE" layoutX="285.0" layoutY="101.0" onMouseClicked="#bounceAdded" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="7.0" AnchorPane.leftAnchor="273.0" AnchorPane.rightAnchor="273.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Circle>
-            <Label alignment="CENTER" layoutX="262.0" layoutY="62.0" prefHeight="16.0" prefWidth="50.0" text="Bounce" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="259.0" AnchorPane.rightAnchor="259.0" />
+            <GridPane layoutX="239.0" layoutY="70.0" prefHeight="60.0" prefWidth="114.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="228.0" AnchorPane.topAnchor="70.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" percentHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" prefHeight="16.0" prefWidth="50.0" text="Bounce" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="259.0" AnchorPane.rightAnchor="259.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" />
+                  <Circle fx:id="bounceButton" fill="WHITE" onMouseClicked="#bounceAdded" radius="12.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="7.0" AnchorPane.leftAnchor="273.0" AnchorPane.rightAnchor="273.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Circle>
+               </children>
+            </GridPane>
          </children>
       </AnchorPane>
    </children>
