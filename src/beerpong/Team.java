@@ -1,5 +1,7 @@
 package beerpong;
 
+import java.util.ArrayList;
+
 /**
  * Class representing a team in a beer pong game.
  * For keeping track on each teams round in the game.
@@ -53,6 +55,10 @@ public class Team {
                 break;
         }
         hitCups = new int[enemyCups.length];
+    }
+
+    public int cupCount() {
+        return enemyCups.length;
     }
 
     /**
@@ -172,6 +178,17 @@ public class Team {
      */
     public boolean hitThisRound(int index){
         return hitCups[index] > 1;
+    }
+
+    public ArrayList<Integer> getHitCups() {
+        ArrayList<Integer> cupsHit = new ArrayList<Integer>();
+
+        for (int i = 0; i < enemyCups.length; i++) {
+            if (enemyCups[i].isHit()) {
+                cupsHit.add(i);
+            }
+        }
+        return cupsHit;
     }
 
 }
