@@ -10,6 +10,8 @@ public class Player {
     private final String name;
     private int noOfThrows;
     private int noOfHits;
+    private int noOfBounceAttempts;
+    private int noOfHitsWithBounce;
 
     /**
      * New player with given name.
@@ -18,7 +20,9 @@ public class Player {
     public Player(String name) {
         this.name = name;
         this.noOfThrows = 0;
+        this.noOfBounceAttempts = 0;
         this.noOfHits = 0;
+        this.noOfHitsWithBounce = 0;
     }
 
     /**
@@ -41,10 +45,31 @@ public class Player {
     }
 
     /**
+     * Returns the players bounce-hit ratio.
+     * @return 1.00 if no bounce-attempts, otherwise hits/attempts.
+     */
+    public double getBounceHitRatio(){
+        if (noOfBounceAttempts == 0)
+            return 1.00;
+        else
+            return noOfHitsWithBounce/noOfBounceAttempts;
+    }
+
+    /**
      * Increment hit-count.
      */
     public void newHit(){
         noOfHits++;
+        noOfThrows++;
+    }
+
+    /**
+     * Increment hit-with-bounce-count.
+     */
+    public void newHitWithBounce(){
+        noOfHits++;
+        noOfBounceAttempts++;
+        noOfHitsWithBounce++;
         noOfThrows++;
     }
 
@@ -54,4 +79,13 @@ public class Player {
     public void newMiss(){
         noOfThrows++;
     }
+
+    /**
+     * Increment miss-with-bounce-count.
+     */
+    public void newMissWithBounce(){
+        noOfThrows++;
+        noOfBounceAttempts++;
+    }
 }
+

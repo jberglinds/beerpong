@@ -3,9 +3,12 @@ package beerpong;
 import javafx.animation.FadeTransition;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -23,6 +26,9 @@ public class Controller implements Initializable{
     public Label team1name, team2name;
     public Label player11, player12, player13;
     public Label player21, player22, player23;
+
+    public ScrollPane scrollPane;
+    public TextFlow eventFlow;
 
     private boolean bounce;
 
@@ -49,18 +55,19 @@ public class Controller implements Initializable{
 
     /**
      * If a miss is registered on the graphic board a call will be made to
-     * the current team representing a miss. If throwBall() returns false the
+     * the current team representing a miss. If hitCup() returns false the
      * team has used all their throws and it will be the other teams turn.
      * @param event a click on the miss button.
      */
     public void miss(Event event) {
-        game.miss();
+        game.miss(bounce);
+        updateEventWall();
     }
 
 
     /**
      * If a hit is registered on the graphic board a call will be made to
-     * the current team representing a hit. If throwBall() returns false the
+     * the current team representing a hit. If hitCup() returns false the
      * team has used all their throws and it will be the other teams turn.
      * Only the enemies cups are available for play at any time.
      * @param event A click on any cup in play at that particular time.
@@ -107,13 +114,31 @@ public class Controller implements Initializable{
         } else if (event.getSource() == tenRight) {
             game.hit(9, bounce, "Right");
         }
+
+        updateScores();
+        updateEventWall();
+    }
+
+    private void updateScores(){
         int[] scores = game.getScores();
         team1score.setText(Integer.toString(scores[0]));
         team2score.setText(Integer.toString(scores[1]));
     }
 
+    /**
+     * Retrieves all available undisplayed messages from the eventlogger and displays them.
+     */
+    private void updateEventWall(){
+        EventLogger events = game.getEventLogger();
+        while (events.containsMessages()){
+            eventFlow.getChildren().add(0, events.getMessage());
+        }
+    }
 
-    //Update view from variables from game.
+
+    /**
+     * Update view from variables set to game from initController.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         game = Game.getInstance();
@@ -142,6 +167,34 @@ public class Controller implements Initializable{
             player21.setText(players[0].getName());
             player22.setText(players[1].getName());
             player23.setText(players[2].getName());
+        }
+
+        setupCups(teams[0].getPlayers().length);
+
+    }
+
+    /**
+     * Hides the cups that wont be used in this game.
+     * TODO: Fixa till, den buggar sönder med positioneringen för högra sidan av någon anledning.
+     * @param players
+     */
+    private void setupCups(int players){
+        if (players == 1){
+            Group group1 = new Group();
+            group1.getChildren().addAll(fourLeft, fiveLeft, sixLeft, sevenLeft, eightLeft, nineLeft, tenLeft);
+            group1.setVisible(false);
+
+            Group group2 = new Group();
+            group1.getChildren().addAll(fourRight, fiveRight, sixRight, sevenRight, eightRight, nineRight, tenRight);
+            group2.setVisible(false);
+        } else if (players == 2){
+            Group group1 = new Group();
+            group1.getChildren().addAll(sevenLeft, eightLeft, nineLeft, tenLeft);
+            group1.setVisible(false);
+
+            Group group2 = new Group();
+            group1.getChildren().addAll(sevenRight, eightRight, nineRight, tenRight);
+            group2.setVisible(false);
         }
     }
 }

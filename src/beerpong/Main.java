@@ -25,7 +25,7 @@ public class Main extends Application {
         Scene scene = new Scene(root, 800, 400);
 
         stage.setScene(scene);
-        Image ico = new Image("file:resources/icon.png");
+        Image ico = new Image("file:resources/images/icon.png");
         stage.getIcons().add(ico);
         stage.show();
 

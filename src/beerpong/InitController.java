@@ -28,7 +28,7 @@ public class InitController implements Initializable{
 
     public void startGame(ActionEvent event) throws IOException {
 
-        //Code to create teams and update graphics.
+        //Code to create teams
         if (event.getSource() == start1v1){
             if (gameName1.getText().equals("") || p1_1v1.getText().equals("") || p2_1v1.getText().equals("")){
                 showAlert();
