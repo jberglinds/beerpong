@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -32,6 +33,10 @@ public class Controller implements Initializable{
     public AnchorPane bg;
     public Label gameName;
     public Label team1score, team2score;
+
+    public Circle bounceButton;
+
+    public GridPane leftCups, rightCups;
     public Circle oneRight, twoRight, threeRight, fourRight, fiveRight, sixRight, sevenRight, eightRight, nineRight, tenRight;
     public Circle oneLeft, twoLeft, threeLeft, fourLeft, fiveLeft, sixLeft, sevenLeft, eightLeft, nineLeft, tenLeft;
     public Label team1name, team2name;
@@ -62,6 +67,12 @@ public class Controller implements Initializable{
      */
     public void bounceAdded(Event event) {
         bounce = !bounce;
+        if (bounce){
+            bounceButton.setFill(Paint.valueOf("black"));
+        } else {
+            bounceButton.setFill(Paint.valueOf("white"));
+        }
+        System.out.println(bounce);
     }
 
     /**
@@ -153,10 +164,7 @@ public class Controller implements Initializable{
             } else {
                 removeHits(0);
             }
-        } else {
-            return;
         }
-
         updateScores();
         updateEventWall();
     }
@@ -363,6 +371,10 @@ public class Controller implements Initializable{
 
             team1name.setCursor(Cursor.HAND);
             team2name.setCursor(Cursor.HAND);
+
+            leftCups.setTranslateX(-60);
+            rightCups.setTranslateX(60);
+
         } else if (players == 2){
             Group group1 = new Group();
             group1.getChildren().addAll(sevenLeft, eightLeft, nineLeft, tenLeft);
@@ -371,6 +383,9 @@ public class Controller implements Initializable{
             Group group2 = new Group();
             group1.getChildren().addAll(sevenRight, eightRight, nineRight, tenRight);
             group2.setVisible(false);
+
+            leftCups.setTranslateX(-30);
+            rightCups.setTranslateX(30);
         }
     }
 
