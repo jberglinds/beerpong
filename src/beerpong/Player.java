@@ -47,9 +47,9 @@ public class Player {
      */
     public double getHitRatio() {
         if (noOfHits == 0)
-            return 1.00;
+            return 0.00;
         else
-            return noOfHits/noOfThrows;
+            return (double) noOfHits/noOfThrows;
     }
 
     /**
@@ -58,9 +58,9 @@ public class Player {
      */
     public double getBounceHitRatio(){
         if (noOfBounceAttempts == 0)
-            return 1.00;
+            return 0.00;
         else
-            return noOfHitsWithBounce/noOfBounceAttempts;
+            return (double) noOfHitsWithBounce/noOfBounceAttempts;
     }
 
     /**
