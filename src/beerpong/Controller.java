@@ -2,15 +2,23 @@ package beerpong;
 
 import javafx.animation.FadeTransition;
 import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -119,6 +127,37 @@ public class Controller implements Initializable{
         updateEventWall();
     }
 
+    public void showPlayerStatistics(Event event) throws IOException {
+        Player player;
+        if (event.getSource() == player11){
+            player = game.getTeams()[0].getPlayers()[0];
+        } else if (event.getSource() == player12) {
+            player = game.getTeams()[0].getPlayers()[1];
+        } else if (event.getSource() == player13) {
+            player = game.getTeams()[0].getPlayers()[2];
+        } else if (event.getSource() == player21) {
+            player = game.getTeams()[1].getPlayers()[0];
+        } else if (event.getSource() == player22) {
+            player = game.getTeams()[1].getPlayers()[1];
+        } else {
+            player = game.getTeams()[1].getPlayers()[2];
+        }
+
+        Stage popupStage = new Stage();
+        popupStage.setTitle("Player Statistics");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                "playerStatistics.fxml"));
+
+        Parent popup = loader.load();
+        popupStage.setScene(new Scene(popup, 400, 250));
+
+        StatisticsController controller = loader.getController();
+        System.out.println(controller);
+        controller.updateLabels(player.getName(), player.getNoOfThrows(), player.getNoOfBounceAttempts(), player.getHitRatio(), player.getBounceHitRatio());
+
+        popupStage.show();
+    }
+
     private void updateScores(){
         int[] scores = game.getScores();
         team1score.setText(Integer.toString(scores[0]));
@@ -175,7 +214,6 @@ public class Controller implements Initializable{
 
     /**
      * Hides the cups that wont be used in this game.
-     * TODO: Fixa till, den buggar sönder med positioneringen för högra sidan av någon anledning.
      * @param players
      */
     private void setupCups(int players){
@@ -197,4 +235,5 @@ public class Controller implements Initializable{
             group2.setVisible(false);
         }
     }
+
 }

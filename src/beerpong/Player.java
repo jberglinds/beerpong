@@ -33,6 +33,14 @@ public class Player {
         return name;
     }
 
+    public int getNoOfThrows() {
+        return noOfThrows;
+    }
+
+    public int getNoOfBounceAttempts() {
+        return noOfBounceAttempts;
+    }
+
     /**
      * Returns the players hit ratio.
      * @return 1.00 if no throws, otherwise hits/throws.

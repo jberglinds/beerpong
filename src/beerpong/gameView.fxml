@@ -27,17 +27,17 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="player11" textFill="WHITE">
+            <Label fx:id="player11" textFill="WHITE" onMouseClicked="#showPlayerStatistics">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="player12" textFill="WHITE">
+            <Label fx:id="player12" textFill="WHITE" onMouseClicked="#showPlayerStatistics">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="player13" textFill="WHITE">
+            <Label fx:id="player13" textFill="WHITE" onMouseClicked="#showPlayerStatistics">
                <font>
                   <Font size="15.0" />
                </font>
@@ -51,17 +51,17 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="player21" textFill="WHITE">
+            <Label fx:id="player21" textFill="WHITE" onMouseClicked="#showPlayerStatistics">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="player22" textFill="WHITE">
+            <Label fx:id="player22" textFill="WHITE" onMouseClicked="#showPlayerStatistics">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="player23" textFill="WHITE">
+            <Label fx:id="player23" textFill="WHITE" onMouseClicked="#showPlayerStatistics">
                <font>
                   <Font size="15.0" />
                </font>
