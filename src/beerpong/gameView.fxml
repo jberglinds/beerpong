@@ -22,49 +22,67 @@
       </HBox>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="92.0" prefWidth="250.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
-            <Label fx:id="team1name" text="Teamname 1" textFill="WHITE">
+            <Label fx:id="team1name" onMouseClicked="#showPlayerStatistics" text="Teamname 1" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="player11" textFill="WHITE">
+            <Label fx:id="player11" onMouseClicked="#showPlayerStatistics" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
-            <Label fx:id="player12" textFill="WHITE">
+            <Label fx:id="player12" onMouseClicked="#showPlayerStatistics" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
-            <Label fx:id="player13" textFill="WHITE">
+            <Label fx:id="player13" onMouseClicked="#showPlayerStatistics" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
          </children>
       </VBox>
       <VBox alignment="TOP_RIGHT" layoutX="350.0" layoutY="2.0" prefHeight="92.0" prefWidth="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
-            <Label fx:id="team2name" text="Teamname 2" textFill="WHITE">
+            <Label fx:id="team2name" onMouseClicked="#showPlayerStatistics" text="Teamname 2" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="player21" textFill="WHITE">
+            <Label fx:id="player21" onMouseClicked="#showPlayerStatistics" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
-            <Label fx:id="player22" textFill="WHITE">
+            <Label fx:id="player22" onMouseClicked="#showPlayerStatistics" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
-            <Label fx:id="player23" textFill="WHITE">
+            <Label fx:id="player23" onMouseClicked="#showPlayerStatistics" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
          </children>
       </VBox>
@@ -90,10 +108,16 @@
          <children>
             <HBox alignment="CENTER" prefHeight="18.0" prefWidth="24.0" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="288.0" AnchorPane.rightAnchor="288.0" AnchorPane.topAnchor="91.0">
                <children>
-                  <RadioButton fx:id="Bounce" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#bounceAdded" />
+                  <RadioButton fx:id="Bounce" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#bounceAdded">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></RadioButton>
                </children>
             </HBox>
-            <Button alignment="BOTTOM_CENTER" layoutX="257.0" layoutY="164.0" mnemonicParsing="false" onAction="#miss" text="Miss" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
+            <Button alignment="BOTTOM_CENTER" layoutX="257.0" layoutY="164.0" mnemonicParsing="false" onAction="#miss" text="Miss" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <GridPane layoutX="16.0" layoutY="16.0" prefHeight="177.0" prefWidth="115.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
