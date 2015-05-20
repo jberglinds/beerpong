@@ -20,18 +20,18 @@ public class StatisticsController {
         this.throwsMade.setText(Integer.toString(throwsMade));
         this.bounceAttempts.setText(Integer.toString(bounceAttempts));
 
-        NumberFormat percentFormatter = NumberFormat.getPercentInstance(Locale.US);
-        this.hitRatio.setText(percentFormatter.format(hitRatio));
-        this.bounceHitRatio.setText(percentFormatter.format(bounceHitRatio));
+        NumberFormat percentFormatter = NumberFormat.getPercentInstance(Locale.US);;
 
         if (throwsMade == 0){
             this.hitRatio.setText("-");
+        } else {
+            this.hitRatio.setText(percentFormatter.format(hitRatio));
         }
         if (bounceAttempts == 0){
             this.bounceHitRatio.setText("-");
+        } else {
+            this.bounceHitRatio.setText(percentFormatter.format(bounceHitRatio));
         }
-
-        System.out.println(playerName + throwsMade + bounceAttempts + hitRatio + bounceHitRatio);
     }
 
     public void close(ActionEvent actionEvent) {

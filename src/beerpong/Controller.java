@@ -139,8 +139,22 @@ public class Controller implements Initializable{
             player = game.getTeams()[1].getPlayers()[0];
         } else if (event.getSource() == player22) {
             player = game.getTeams()[1].getPlayers()[1];
-        } else {
+        } else if (event.getSource() == player22){
             player = game.getTeams()[1].getPlayers()[2];
+        } else if (event.getSource() == team1name){
+            if (game.getTeams()[0].getPlayers().length == 1){
+                player = game.getTeams()[0].getPlayers()[0];
+            } else {
+                return;
+            }
+        } else if (event.getSource() == team2name){
+            if (game.getTeams()[1].getPlayers().length == 1){
+                player = game.getTeams()[1].getPlayers()[0];
+            } else {
+                return;
+            }
+        } else {
+            player = game.getTeams()[0].getPlayers()[0];
         }
 
         Stage popupStage = new Stage();
