@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.TextFlow;
@@ -21,6 +22,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
@@ -69,7 +71,16 @@ public class Controller implements Initializable{
      * @param event a click on the miss button.
      */
     public void miss(Event event) {
-        game.miss(bounce);
+        int answerCode = game.miss(bounce);
+        if (answerCode == -1) {
+            int index = game.getCurrentTeamIndex();
+            highlightTeam(index);
+            if (index == 0) {
+                removeHits(1);
+            } else {
+                removeHits(0);
+            }
+        }
         updateEventWall();
     }
 
@@ -82,51 +93,136 @@ public class Controller implements Initializable{
      * @param event A click on any cup in play at that particular time.
      */
     public void hit(Event event) {
-        if (event.getSource() == oneLeft) {
-            game.hit(0, bounce, "Left");
-        } else if (event.getSource() == twoLeft) {
-            game.hit(1, bounce, "Left");
-        } else if (event.getSource() == threeLeft) {
-            game.hit(2, bounce, "Left");
-        } else if (event.getSource() == fourLeft) {
-            game.hit(3, bounce, "Left");
-        } else if (event.getSource() == fiveLeft) {
-            game.hit(4, bounce, "Left");
-        } else if (event.getSource() == sixLeft) {
-            game.hit(5, bounce, "Left");
-        } else if (event.getSource() == sevenLeft) {
-            game.hit(6, bounce, "Left");
-        } else if (event.getSource() == eightLeft) {
-            game.hit(7, bounce, "Left");
-        } else if (event.getSource() == nineLeft) {
-            game.hit(8, bounce, "Left");
-        } else if (event.getSource() == tenLeft) {
-            game.hit(9, bounce, "Left");
-        } else if (event.getSource() == oneRight) {
-            game.hit(0, bounce, "Right");
-        } else if (event.getSource() == twoRight) {
-            game.hit(1, bounce, "Right");
-        } else if (event.getSource() == threeRight) {
-            game.hit(2, bounce, "Right");
-        } else if (event.getSource() == fourRight) {
-            game.hit(3, bounce, "Right");
-        } else if (event.getSource() == fiveRight) {
-            game.hit(4, bounce, "Right");
-        } else if (event.getSource() == sixRight) {
-            game.hit(5, bounce, "Right");
-        } else if (event.getSource() == sevenRight) {
-            game.hit(6, bounce, "Right");
-        } else if (event.getSource() == eightRight) {
-            game.hit(7, bounce, "Right");
-        } else if (event.getSource() == nineRight) {
-            game.hit(8, bounce, "Right");
-        } else if (event.getSource() == tenRight) {
-            game.hit(9, bounce, "Right");
+        Circle c = (Circle) event.getSource();
+        int answerCode = 0;
+
+        if (c.getOpacity() == 0) {
+            return;
+        }
+
+        if (c == oneLeft) {
+            answerCode = game.hit(0, bounce, "Left");
+        } else if (c == twoLeft) {
+            answerCode = game.hit(1, bounce, "Left");
+        } else if (c == threeLeft) {
+            answerCode = game.hit(2, bounce, "Left");
+        } else if (c == fourLeft) {
+            answerCode = game.hit(3, bounce, "Left");
+        } else if (c == fiveLeft) {
+            answerCode = game.hit(4, bounce, "Left");
+        } else if (c == sixLeft) {
+            answerCode = game.hit(5, bounce, "Left");
+        } else if (c == sevenLeft) {
+            answerCode = game.hit(6, bounce, "Left");
+        } else if (c == eightLeft) {
+            answerCode = game.hit(7, bounce, "Left");
+        } else if (c == nineLeft) {
+            answerCode = game.hit(8, bounce, "Left");
+        } else if (c == tenLeft) {
+            answerCode = game.hit(9, bounce, "Left");
+        } else if (c == oneRight) {
+            answerCode = game.hit(0, bounce, "Right");
+        } else if (c == twoRight) {
+            answerCode = game.hit(1, bounce, "Right");
+        } else if (c == threeRight) {
+            answerCode = game.hit(2, bounce, "Right");
+        } else if (c == fourRight) {
+            answerCode = game.hit(3, bounce, "Right");
+        } else if (c == fiveRight) {
+            answerCode = game.hit(4, bounce, "Right");
+        } else if (c == sixRight) {
+            answerCode = game.hit(5, bounce, "Right");
+        } else if (c == sevenRight) {
+            answerCode = game.hit(6, bounce, "Right");
+        } else if (c == eightRight) {
+            answerCode = game.hit(7, bounce, "Right");
+        } else if (c == nineRight) {
+            answerCode = game.hit(8, bounce, "Right");
+        } else if (c == tenRight) {
+            answerCode = game.hit(9, bounce, "Right");
+        }
+
+        if (answerCode == 1) {
+            c.setOpacity(0.5);
+        } else if (answerCode == -1) {
+            c.setOpacity(0.5);
+            int index = game.getCurrentTeamIndex();
+            highlightTeam(index);
+            if (index == 0) {
+                removeHits(1);
+            } else {
+                removeHits(0);
+            }
+        } else {
+            return;
         }
 
         updateScores();
         updateEventWall();
     }
+
+    private void removeHits(int teamIndex) {
+        ArrayList<Integer> hits = game.getCupsHit(teamIndex);
+
+        if (teamIndex == 0) {
+            for (Integer n : hits) {
+                if (n == 0) {
+                    oneRight.setOpacity(0);
+                } else if (n == 1) {
+                    twoRight.setOpacity(0);
+                } else if (n == 2) {
+                    threeRight.setOpacity(0);
+                } else if (n == 3) {
+                    fourRight.setOpacity(0);
+                } else if (n == 4) {
+                    fiveRight.setOpacity(0);
+                } else if (n == 5) {
+                    sixRight.setOpacity(0);
+                } else if (n == 6) {
+                    sevenRight.setOpacity(0);
+                } else if (n == 7) {
+                    eightRight.setOpacity(0);
+                } else if (n == 8) {
+                    nineRight.setOpacity(0);
+                } else if (n == 9) {
+                    tenRight.setOpacity(0);
+                }
+            }
+        } else if (teamIndex == 1){
+            for (Integer n : hits) {
+                if (n == 0) {
+                    oneLeft.setOpacity(0);
+                } else if (n == 1) {
+                    twoLeft.setOpacity(0);
+                } else if (n == 2) {
+                    threeLeft.setOpacity(0);
+                } else if (n == 3) {
+                    fourLeft.setOpacity(0);
+                } else if (n == 4) {
+                    fiveLeft.setOpacity(0);
+                } else if (n == 5) {
+                    sixLeft.setOpacity(0);
+                } else if (n == 6) {
+                    sevenLeft.setOpacity(0);
+                } else if (n == 7) {
+                    eightLeft.setOpacity(0);
+                } else if (n == 8) {
+                    nineLeft.setOpacity(0);
+                } else if (n == 9) {
+                    tenLeft.setOpacity(0);
+                }
+            }
+        }
+    }
+
+    private void highlightTeam(int teamIndex) {
+        if (teamIndex == 0) {
+            team2name.setTextFill(Paint.valueOf("white"));
+            team1name.setTextFill(Paint.valueOf("yellow"));
+        } else {
+            team1name.setTextFill(Paint.valueOf("white"));
+            team2name.setTextFill(Paint.valueOf("yellow"));
+        }
 
     public void showPlayerStatistics(Event event) throws IOException {
         Player player;
@@ -174,12 +270,34 @@ public class Controller implements Initializable{
 
     private void updateScores(){
         int[] scores = game.getScores();
+        if (game.getCupCount() == 3) {
+            if (scores[0] >= 3) {
+                gameName.setText(team1name.getText() + " won!");
+            }
+            if (scores[1] >= 3) {
+                gameName.setText(team2name.getText() + " won!");
+            }
+        } else if (game.getCupCount() == 6) {
+            if (scores[0] >= 6) {
+                gameName.setText(team1name.getText() + " won!");
+            }
+            if (scores[1] >= 6) {
+                gameName.setText(team2name.getText() + " won!");
+            }
+        } else {
+            if (scores[0] >= 10) {
+                gameName.setText(team1name.getText() + " won!");
+            }
+            if (scores[1] >= 10) {
+                gameName.setText(team2name.getText() + " won!");
+            }
+        }
         team1score.setText(Integer.toString(scores[0]));
         team2score.setText(Integer.toString(scores[1]));
     }
 
     /**
-     * Retrieves all available undisplayed messages from the eventlogger and displays them.
+     * Retrieves all available undisplayed messages from the event logger and displays them.
      */
     private void updateEventWall(){
         EventLogger events = game.getEventLogger();
@@ -187,6 +305,7 @@ public class Controller implements Initializable{
             eventFlow.getChildren().add(0, events.getMessage());
         }
     }
+
 
 
     /**
@@ -200,6 +319,7 @@ public class Controller implements Initializable{
 
         Team[] teams = game.getTeams();
         team1name.setText(teams[0].getTeamName());
+        team1name.setTextFill(Paint.valueOf("yellow"));
         team2name.setText(teams[1].getTeamName());
 
         if (teams[0].getPlayers().length == 2){

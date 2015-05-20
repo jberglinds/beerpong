@@ -1,5 +1,7 @@
 package beerpong;
 
+import java.util.ArrayList;
+
 /**
  * Created by jonathan on 2015-05-18.
  */
@@ -72,6 +74,10 @@ public class Game {
         return teams;
     }
 
+    public int getCupCount() {
+        return teams[0].cupCount();
+    }
+
     /**
      * Returns an array with the scores of each team
      * @return array with scores.
@@ -91,11 +97,12 @@ public class Game {
      * @param bounced if it is a bounce-attempt or not.
      * @param side which side of cups that were clicked.
      */
-    public void hit(int index, boolean bounced, String side) {
+    public int hit(int index, boolean bounced, String side) {
+        int answerCode = 0;
 
         //Om det är rätt lags tur att kasta, gå vidare, annars logga ett meddelande.
         if ((side.equals("Left") && currentTeamIndex == 1) || (side.equals("Right") && currentTeamIndex == 0)) {
-
+            answerCode = 1;
             //Om man har träffat flera i samma får man chansen att ta bort ett antal muggar extra. Dessa markeras direkt som träffade och ingen poäng ges (har redan getts).
             if (removeCupCount > 0) {
                 boolean b = teams[currentTeamIndex].removeCup(index);
@@ -105,6 +112,7 @@ public class Game {
                 //Byt lag och ge nya kast om tillräckligt många muggar har blivit borttagna
                 if (removeCupCount <= 0){
                     switchTeamIndex();
+                    answerCode = -1;
                 }
             }
 
@@ -142,19 +150,22 @@ public class Game {
                     }
                     if (removeCupCount <= 0) {
                         switchTeamIndex();
+                        answerCode = -1;
                     }
                 }
             }
         } else {
             eventLogger.newNotFinishedMessage(teams[currentTeamIndex]);
         }
+        return answerCode;
     }
 
     /**
      * Registers a new miss for the currently playing team.
      * @param bounced if it was a bounce-attempt or not.
      */
-    public void miss(boolean bounced) {
+    public int miss(boolean bounced) {
+        int answerCode = 0;
         if (throwsLeft > 0){
             teams[currentTeamIndex].newMiss(bounced, playerIndex);
             if (bounced) {
@@ -172,9 +183,11 @@ public class Game {
                 }
                 if (removeCupCount <= 0) {
                     switchTeamIndex();
+                    answerCode = -1;
                 }
             }
         }
+        return answerCode;
     }
 
     private void switchTeamIndex(){
@@ -191,5 +204,13 @@ public class Game {
 
     public EventLogger getEventLogger(){
         return eventLogger;
+    }
+
+    public ArrayList<Integer> getCupsHit(int teamIndex) {
+        return teams[teamIndex].getHitCups();
+    }
+
+    public int getCurrentTeamIndex() {
+        return currentTeamIndex;
     }
 }
