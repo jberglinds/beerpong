@@ -2,16 +2,28 @@ package beerpong;
 
 import javafx.animation.FadeTransition;
 import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+<<<<<<< HEAD
 import javafx.scene.paint.Paint;
+=======
+import javafx.scene.layout.Pane;
+>>>>>>> master
 import javafx.scene.shape.Circle;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -214,6 +226,49 @@ public class Controller implements Initializable{
             team1name.setTextFill(Paint.valueOf("white"));
             team2name.setTextFill(Paint.valueOf("yellow"));
         }
+
+    public void showPlayerStatistics(Event event) throws IOException {
+        Player player;
+        if (event.getSource() == player11){
+            player = game.getTeams()[0].getPlayers()[0];
+        } else if (event.getSource() == player12) {
+            player = game.getTeams()[0].getPlayers()[1];
+        } else if (event.getSource() == player13) {
+            player = game.getTeams()[0].getPlayers()[2];
+        } else if (event.getSource() == player21) {
+            player = game.getTeams()[1].getPlayers()[0];
+        } else if (event.getSource() == player22) {
+            player = game.getTeams()[1].getPlayers()[1];
+        } else if (event.getSource() == player22){
+            player = game.getTeams()[1].getPlayers()[2];
+        } else if (event.getSource() == team1name){
+            if (game.getTeams()[0].getPlayers().length == 1){
+                player = game.getTeams()[0].getPlayers()[0];
+            } else {
+                return;
+            }
+        } else if (event.getSource() == team2name){
+            if (game.getTeams()[1].getPlayers().length == 1){
+                player = game.getTeams()[1].getPlayers()[0];
+            } else {
+                return;
+            }
+        } else {
+            player = game.getTeams()[0].getPlayers()[0];
+        }
+
+        Stage popupStage = new Stage();
+        popupStage.setTitle("Player Statistics");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                "playerStatistics.fxml"));
+
+        Parent popup = loader.load();
+        popupStage.setScene(new Scene(popup, 400, 250));
+
+        StatisticsController controller = loader.getController();
+        controller.updateLabels(player.getName(), player.getNoOfThrows(), player.getNoOfBounceAttempts(), player.getHitRatio(), player.getBounceHitRatio());
+
+        popupStage.show();
     }
 
     private void updateScores(){
@@ -296,7 +351,6 @@ public class Controller implements Initializable{
 
     /**
      * Hides the cups that wont be used in this game.
-     * TODO: Fixa till, den buggar sönder med positioneringen för högra sidan av någon anledning.
      * @param players
      */
     private void setupCups(int players){
@@ -308,6 +362,9 @@ public class Controller implements Initializable{
             Group group2 = new Group();
             group1.getChildren().addAll(fourRight, fiveRight, sixRight, sevenRight, eightRight, nineRight, tenRight);
             group2.setVisible(false);
+
+            team1name.setCursor(Cursor.HAND);
+            team2name.setCursor(Cursor.HAND);
         } else if (players == 2){
             Group group1 = new Group();
             group1.getChildren().addAll(sevenLeft, eightLeft, nineLeft, tenLeft);
@@ -318,4 +375,5 @@ public class Controller implements Initializable{
             group2.setVisible(false);
         }
     }
+
 }
