@@ -4,6 +4,7 @@ import javafx.animation.FadeTransition;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -166,7 +167,6 @@ public class Controller implements Initializable{
         popupStage.setScene(new Scene(popup, 400, 250));
 
         StatisticsController controller = loader.getController();
-        System.out.println(controller);
         controller.updateLabels(player.getName(), player.getNoOfThrows(), player.getNoOfBounceAttempts(), player.getHitRatio(), player.getBounceHitRatio());
 
         popupStage.show();
@@ -239,6 +239,9 @@ public class Controller implements Initializable{
             Group group2 = new Group();
             group1.getChildren().addAll(fourRight, fiveRight, sixRight, sevenRight, eightRight, nineRight, tenRight);
             group2.setVisible(false);
+
+            team1name.setCursor(Cursor.HAND);
+            team2name.setCursor(Cursor.HAND);
         } else if (players == 2){
             Group group1 = new Group();
             group1.getChildren().addAll(sevenLeft, eightLeft, nineLeft, tenLeft);
