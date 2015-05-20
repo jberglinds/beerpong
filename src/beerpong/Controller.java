@@ -223,6 +223,7 @@ public class Controller implements Initializable{
             team1name.setTextFill(Paint.valueOf("white"));
             team2name.setTextFill(Paint.valueOf("yellow"));
         }
+    }
 
     public void showPlayerStatistics(Event event) throws IOException {
         Player player;
@@ -236,7 +237,7 @@ public class Controller implements Initializable{
             player = game.getTeams()[1].getPlayers()[0];
         } else if (event.getSource() == player22) {
             player = game.getTeams()[1].getPlayers()[1];
-        } else if (event.getSource() == player22){
+        } else if (event.getSource() == player23){
             player = game.getTeams()[1].getPlayers()[2];
         } else if (event.getSource() == team1name){
             if (game.getTeams()[0].getPlayers().length == 1){
