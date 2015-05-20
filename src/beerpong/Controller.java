@@ -12,11 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
-<<<<<<< HEAD
 import javafx.scene.paint.Paint;
-=======
 import javafx.scene.layout.Pane;
->>>>>>> master
 import javafx.scene.shape.Circle;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
