@@ -9,6 +9,7 @@ public class Game {
 
     private String gameName;
     private Team[] teams = new Team[2];
+    private int noOfBalls, noOfCups;
 
     private int currentTeamIndex;   //Index of team currently playing
     private int playerIndex;        //Index of current player, could be set by the GUI to allow same player to throw more than 1 ball.
@@ -48,13 +49,31 @@ public class Game {
     }
 
     /**
+     * Sets number of balls and number of cups for the game.
+     * @param balls number of balls (throws) per round.
+     * @param cups number of cups per team.
+     */
+    public void setGameParameters(int balls, int cups){
+        noOfBalls = balls;
+        noOfCups = cups;
+        throwsLeft = balls;
+    }
+
+    /**
+     * Returns the number of cups set.
+     * @return number of cups that each team will be playing with.
+     */
+    public int getNoOfCups(){
+        return noOfCups;
+    }
+
+    /**
      * Creates the first team to participate in the game.
      * @param teamName name of team
      * @param teamplayers names of players in team
      */
     public void setTeam1(String teamName, String[] teamplayers){
-        teams[0] = new Team(teamName, teamplayers);
-        throwsLeft = teamplayers.length;
+        teams[0] = new Team(teamName, teamplayers, noOfCups);
     }
 
     /**
@@ -63,7 +82,7 @@ public class Game {
      * @param teamplayers names of players in team
      */
     public void setTeam2(String teamName, String[] teamplayers){
-        teams[1] = new Team(teamName, teamplayers);
+        teams[1] = new Team(teamName, teamplayers, noOfCups);
     }
 
     /**
@@ -140,7 +159,6 @@ public class Game {
                         }
                         eventLogger.newHit(teams[currentTeamIndex].getPlayers()[playerIndex], index);
                     }
-                    playerIndex++;
                 }
                 if (throwsLeft <= 0) {
                     int cupsHit = teams[currentTeamIndex].endTurn();
@@ -174,7 +192,6 @@ public class Game {
                 eventLogger.newMiss(teams[currentTeamIndex].getPlayers()[playerIndex]);
             }
             throwsLeft--;
-            playerIndex++;
             if (throwsLeft <= 0) {
                 int cupsHit = teams[currentTeamIndex].endTurn();
                 removeCupCount = scoreThisRound-cupsHit;
@@ -199,7 +216,7 @@ public class Game {
         scoreThisRound = 0;
         removeCupCount = 0;
         playerIndex = 0;
-        throwsLeft = teams[0].getPlayers().length;
+        throwsLeft = noOfBalls;
     }
 
     public EventLogger getEventLogger(){

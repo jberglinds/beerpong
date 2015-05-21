@@ -78,6 +78,11 @@ public class Controller implements Initializable{
         }
     }
 
+    private void resetBounce(){
+        bounce = false;
+        bounceButton.setFill(Paint.valueOf("white"));
+    }
+
     /**
      * If a miss is registered on the graphic board a call will be made to
      * the current team representing a miss. If hitCup() returns false the
@@ -99,6 +104,7 @@ public class Controller implements Initializable{
                 }
             }
             updateEventWall();
+            resetBounce();
         }
     }
 
@@ -177,6 +183,7 @@ public class Controller implements Initializable{
             }
             updateScores();
             updateEventWall();
+            resetBounce();
         }
     }
 
@@ -381,16 +388,16 @@ public class Controller implements Initializable{
             player23.setText(players[2].getName());
         }
 
-        setupCups(teams[0].getPlayers().length);
+        setupCups(game.getNoOfCups());
 
     }
 
     /**
      * Hides the cups that wont be used in this game.
-     * @param players amount of players in a team
+     * @param cups amount of players in a team
      */
-    private void setupCups(int players){
-        if (players == 1){
+    private void setupCups(int cups){
+        if (cups == 3){
             Group group1 = new Group();
             group1.getChildren().addAll(fourLeft, fiveLeft, sixLeft, sevenLeft, eightLeft, nineLeft, tenLeft);
             group1.setVisible(false);
@@ -405,7 +412,7 @@ public class Controller implements Initializable{
             leftCups.setTranslateX(-60);
             rightCups.setTranslateX(60);
 
-        } else if (players == 2){
+        } else if (cups == 6){
             Group group1 = new Group();
             group1.getChildren().addAll(sevenLeft, eightLeft, nineLeft, tenLeft);
             group1.setVisible(false);
