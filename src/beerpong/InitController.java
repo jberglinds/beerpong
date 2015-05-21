@@ -48,7 +48,7 @@ public class InitController implements Initializable{
                         break;
                 }
                 int cups = 3;
-                switch (balls_1v1.getSelectionModel().getSelectedIndex()){
+                switch (cups_1v1.getSelectionModel().getSelectedIndex()){
                     case 1:
                         cups = 6;
                         break;
@@ -72,7 +72,7 @@ public class InitController implements Initializable{
                     game.setGameName(gameName2.getText());
                 }
                 int balls = 2;
-                switch (balls_1v1.getSelectionModel().getSelectedIndex()){
+                switch (balls_2v2.getSelectionModel().getSelectedIndex()){
                     case 0:
                         balls = 1;
                         break;
@@ -81,7 +81,7 @@ public class InitController implements Initializable{
                         break;
                 }
                 int cups = 6;
-                switch (balls_1v1.getSelectionModel().getSelectedIndex()){
+                switch (cups_2v2.getSelectionModel().getSelectedIndex()){
                     case 0:
                         cups = 3;
                         break;
@@ -106,7 +106,7 @@ public class InitController implements Initializable{
                     game.setGameName(gameName3.getText());
                 }
                 int balls = 3;
-                switch (balls_1v1.getSelectionModel().getSelectedIndex()){
+                switch (balls_3v3.getSelectionModel().getSelectedIndex()){
                     case 1:
                         balls = 2;
                         break;
@@ -115,7 +115,7 @@ public class InitController implements Initializable{
                         break;
                 }
                 int cups = 10;
-                switch (balls_1v1.getSelectionModel().getSelectedIndex()){
+                switch (cups_3v3.getSelectionModel().getSelectedIndex()){
                     case 1:
                         cups = 6;
                         break;
