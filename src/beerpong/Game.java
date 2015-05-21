@@ -159,6 +159,7 @@ public class Game {
                         }
                         eventLogger.newHit(teams[currentTeamIndex].getPlayers()[playerIndex], index);
                     }
+                    playerIndex = (playerIndex+1) % teams[currentTeamIndex].getPlayers().length;
                 }
                 if (throwsLeft <= 0) {
                     int cupsHit = teams[currentTeamIndex].endTurn();
@@ -192,6 +193,7 @@ public class Game {
                 eventLogger.newMiss(teams[currentTeamIndex].getPlayers()[playerIndex]);
             }
             throwsLeft--;
+            playerIndex = (playerIndex+1) % teams[currentTeamIndex].getPlayers().length;
             if (throwsLeft <= 0) {
                 int cupsHit = teams[currentTeamIndex].endTurn();
                 removeCupCount = scoreThisRound-cupsHit;
