@@ -20,8 +20,9 @@ public class Team {
      * Initializes all of the classes fields.
      * @param name The name of the team.
      * @param players A list of all players in the team.
+     * @param cups Number of cups to be initialized.
      */
-    public Team(String name, String[] players) {
+    public Team(String name, String[] players, int cups) {
         this.teamName = name;
         this.players = new Player[players.length];
         for (int i = 0; i < players.length; i++){
@@ -29,30 +30,9 @@ public class Team {
         }
         this.score = 0;
 
-        // Initializes the enemyCups array depending on how many players are in the team
-        switch (players.length) {
-            case 1: // 1 player = 3 cups
-                this.enemyCups = new Cup[3];
-                for (int i = 0; i < enemyCups.length; i++) {
-                    enemyCups[i] = new Cup();
-                }
-                break;
-            case 2: // 2 players = 6 cups
-                this.enemyCups = new Cup[6];
-                for (int i = 0; i < enemyCups.length; i++) {
-                    enemyCups[i] = new Cup();
-                }
-                break;
-            case 3: // 3 players = 10 cups
-                this.enemyCups = new Cup[10];
-                for (int i = 0; i < enemyCups.length; i++) {
-                    enemyCups[i] = new Cup();
-                }
-                break;
-            default:
-                System.out.println("Invalid size of team");
-                this.enemyCups = null;
-                break;
+        this.enemyCups = new Cup[cups];
+        for (int i = 0; i < enemyCups.length; i++) {
+            enemyCups[i] = new Cup();
         }
         hitCups = new int[enemyCups.length];
     }
