@@ -46,6 +46,7 @@ public class Controller implements Initializable{
 
     public ScrollPane scrollPane;
     public TextFlow eventFlow;
+    public Text statusfield;
 
     private boolean finishedGame;
     private boolean bounce;
@@ -376,6 +377,16 @@ public class Controller implements Initializable{
      */
     private void updateEventWall(){
         EventLogger events = game.getEventLogger();
+
+        String text = events.getStatusMessage();
+        if (text.contains("...")) {
+            statusfield.setFill(Paint.valueOf("red"));
+        } else {
+            statusfield.setFill(Paint.valueOf("blue"));
+        }
+        statusfield.setText(text);
+        statusfield.setVisible(true);
+
         while (events.containsMessages()){
             eventFlow.getChildren().add(0, events.getMessage());
             eventFlow.getChildren().get(0).setStyle("-fx-font-size: 18px; -fx-font-weight: bold");
@@ -405,6 +416,7 @@ public class Controller implements Initializable{
         game = Game.getInstance();
 
         gameName.setText(game.getGameName());
+        statusfield.setVisible(false);
 
         Team[] teams = game.getTeams();
         team1name.setText(teams[0].getTeamName());

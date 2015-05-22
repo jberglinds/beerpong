@@ -13,6 +13,7 @@ public class EventLogger {
 
     //Queue
     private LinkedList<Text> messages;
+    private String statusMessage;
 
     public EventLogger() {
         messages = new LinkedList<Text>();
@@ -75,10 +76,7 @@ public class EventLogger {
      * @param team the unfinished team
      */
     public void newNotFinishedMessage(Team team){
-        String string = team.getTeamName() + " is not yet finished...";
-        Text text = makeTextObject(string);
-        text.setFill(Paint.valueOf("red"));
-        messages.addLast(text);
+        statusMessage = team.getTeamName() + " is not yet finished...";
     }
 
     /**
@@ -87,10 +85,7 @@ public class EventLogger {
      * @param number number of cups that needs removal.
      */
     public void newRemoveCupsMessage(Team team, int number){
-        String string = team.getTeamName() + ", please remove " + number + " more cups.";
-        Text text = makeTextObject(string);
-        text.setFill(Paint.valueOf("blue"));
-        messages.addLast(text);
+        statusMessage = team.getTeamName() + ", please remove " + number + " more cups.";
     }
 
     private Text makeTextObject(String string){
@@ -113,5 +108,15 @@ public class EventLogger {
      */
     public Text getMessage(){
         return messages.removeFirst();
+    }
+
+    /**
+     * Returns the value of status message as well as clears it
+     * @return statusMessage
+     */
+    public String getStatusMessage() {
+        String temp = statusMessage;
+        statusMessage = "";
+        return temp;
     }
 }

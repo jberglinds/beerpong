@@ -288,5 +288,14 @@
             </GridPane>
          </children>
       </AnchorPane>
+      <HBox alignment="TOP_CENTER" layoutX="85.0" layoutY="85.0" prefHeight="4.0" prefWidth="360.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="80.0">
+         <children>
+            <Text fx:id="statusfield" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Status Message">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
