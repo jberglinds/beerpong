@@ -5,9 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.net.URL;
 
 public class Main extends Application {
@@ -28,11 +30,19 @@ public class Main extends Application {
         Image ico = new Image("file:resources/images/icon.png");
         stage.getIcons().add(ico);
         stage.show();
+        setIcon();
 
     }
 
     public static void main(String[] args) {
+        setIcon();
         launch(args);
+    }
+
+    public static void setIcon()
+    {
+            com.apple.eawt.Application.getApplication().setDockIconImage(new ImageIcon("resources/images/icon.png").getImage());
+
     }
 
 

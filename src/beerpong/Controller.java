@@ -340,6 +340,7 @@ public class Controller implements Initializable{
         }
         team1score.setText(Integer.toString(scores[0]));
         team2score.setText(Integer.toString(scores[1]));
+        com.apple.eawt.Application.getApplication().setDockIconBadge(Integer.toString(scores[0]) + " - " + Integer.toString(scores[1]));
     }
 
     /**
