@@ -108,6 +108,10 @@ public class Game {
         return scores;
     }
 
+    public void setPlayerIndex(int index){
+        playerIndex = index;
+    }
+
     /**
      * Tries to hit a specific cup, called from GUI.
      * Only allows the currently playing team to try to hit cups.
@@ -159,7 +163,6 @@ public class Game {
                         }
                         eventLogger.newHit(teams[currentTeamIndex].getPlayers()[playerIndex], index);
                     }
-                    playerIndex = (playerIndex+1) % teams[currentTeamIndex].getPlayers().length;
                 }
                 if (throwsLeft <= 0) {
                     int cupsHit = teams[currentTeamIndex].endTurn();
@@ -193,7 +196,6 @@ public class Game {
                 eventLogger.newMiss(teams[currentTeamIndex].getPlayers()[playerIndex]);
             }
             throwsLeft--;
-            playerIndex = (playerIndex+1) % teams[currentTeamIndex].getPlayers().length;
             if (throwsLeft <= 0) {
                 int cupsHit = teams[currentTeamIndex].endTurn();
                 removeCupCount = scoreThisRound-cupsHit;

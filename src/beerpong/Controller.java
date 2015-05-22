@@ -1,20 +1,19 @@
 package beerpong;
 
 import javafx.animation.FadeTransition;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
-import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.*;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -40,6 +39,10 @@ public class Controller implements Initializable{
     public Label team1name, team2name;
     public Label player11, player12, player13;
     public Label player21, player22, player23;
+
+    public HBox player11box, player12box, player13box, player21box, player22box, player23box;
+    public ToggleGroup team1players, team2players;
+    public RadioButton p11, p12, p13, p21, p22, p23;
 
     public ScrollPane scrollPane;
     public TextFlow eventFlow;
@@ -253,9 +256,34 @@ public class Controller implements Initializable{
         if (teamIndex == 0) {
             team2name.setTextFill(Paint.valueOf("white"));
             team1name.setTextFill(Paint.valueOf("yellow"));
+
+            for (Toggle t : team1players.getToggles()) {
+                if (t instanceof RadioButton) {
+                    ((RadioButton) t).setDisable(false);
+                }
+            }
+            p11.setSelected(true);
+            for (Toggle t : team2players.getToggles()) {
+                if (t instanceof RadioButton) {
+                    ((RadioButton) t).setDisable(true);
+                }
+            }
+
         } else {
             team1name.setTextFill(Paint.valueOf("white"));
             team2name.setTextFill(Paint.valueOf("yellow"));
+
+            for (Toggle t : team1players.getToggles()) {
+                if (t instanceof RadioButton) {
+                    ((RadioButton) t).setDisable(true);
+                }
+            }
+            p21.setSelected(true);
+            for (Toggle t : team2players.getToggles()) {
+                if (t instanceof RadioButton) {
+                    ((RadioButton) t).setDisable(false);
+                }
+            }
         }
     }
 
@@ -350,10 +378,24 @@ public class Controller implements Initializable{
         EventLogger events = game.getEventLogger();
         while (events.containsMessages()){
             eventFlow.getChildren().add(0, events.getMessage());
+            eventFlow.getChildren().get(0).setStyle("-fx-font-size: 18px; -fx-font-weight: bold");
+            if (eventFlow.getChildren().size() > 1){
+                eventFlow.getChildren().get(1).setStyle("-fx-font-size: 13px; -fx-font-weight: none");
+            }
         }
     }
 
-
+    public void setPlayerIndex(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == p11 || actionEvent.getSource() == p12 || actionEvent.getSource() ==p13){
+            Toggle selectedToggle = team1players.getSelectedToggle();
+            int selectedToggleIndex = team1players.getToggles().indexOf(selectedToggle);
+            game.setPlayerIndex(selectedToggleIndex);
+        } else {
+            Toggle selectedToggle = team2players.getSelectedToggle();
+            int selectedToggleIndex = team2players.getToggles().indexOf(selectedToggle);
+            game.setPlayerIndex(selectedToggleIndex);
+        }
+    }
 
     /**
      * Update view from variables set to game from initController.
@@ -368,8 +410,14 @@ public class Controller implements Initializable{
         team1name.setText(teams[0].getTeamName());
         team1name.setTextFill(Paint.valueOf("yellow"));
         team2name.setText(teams[1].getTeamName());
-
-        if (teams[0].getPlayers().length == 2){
+        if(teams[0].getPlayers().length == 1){
+            player11box.setVisible(false);
+            player12box.setVisible(false);
+            player13box.setVisible(false);
+            player21box.setVisible(false);
+            player22box.setVisible(false);
+            player23box.setVisible(false);
+        } else if (teams[0].getPlayers().length == 2){
             Player[] players = teams[0].getPlayers();
             player11.setText(players[0].getName());
             player12.setText(players[1].getName());
@@ -377,6 +425,8 @@ public class Controller implements Initializable{
             players = teams[1].getPlayers();
             player21.setText(players[0].getName());
             player22.setText(players[1].getName());
+            player13box.setVisible(false);
+            player23box.setVisible(false);
         } else if (teams[0].getPlayers().length == 3){
             Player[] players = teams[0].getPlayers();
             player11.setText(players[0].getName());
@@ -389,6 +439,11 @@ public class Controller implements Initializable{
             player23.setText(players[2].getName());
         }
 
+        for (Toggle t : team2players.getToggles()) {
+            if (t instanceof RadioButton) {
+                ((RadioButton) t).setDisable(true);
+            }
+        }
         setupCups(game.getNoOfCups());
 
     }
