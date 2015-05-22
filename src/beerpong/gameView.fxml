@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
+
 <AnchorPane fx:id="bg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="beerpong.Controller">
    <children>
       <HBox alignment="TOP_CENTER" layoutX="81.0" layoutY="6.0" prefHeight="4.0" prefWidth="360.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="15.0">
@@ -23,31 +26,79 @@
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin>
             </Label>
-            <Label fx:id="player11" onMouseClicked="#showPlayerStatistics" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
-            <Label fx:id="player12" onMouseClicked="#showPlayerStatistics" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
-            <Label fx:id="player13" onMouseClicked="#showPlayerStatistics" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
+            <HBox fx:id="player11box">
+               <children>
+                  <RadioButton fx:id="p11" mnemonicParsing="false" onAction="#setPlayerIndex" selected="true">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="1.0" />
+                     </padding>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="team1players" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <Label fx:id="player11" onMouseClicked="#showPlayerStatistics" text="Player 1" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="2.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="player12box">
+               <children>
+                  <RadioButton fx:id="p12" mnemonicParsing="false" onAction="#setPlayerIndex" toggleGroup="$team1players">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="1.0" />
+                     </padding>
+                  </RadioButton>
+                  <Label fx:id="player12" onMouseClicked="#showPlayerStatistics" text="Player 2" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="2.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="player13box">
+               <children>
+                  <RadioButton fx:id="p13" mnemonicParsing="false" onAction="#setPlayerIndex" toggleGroup="$team1players">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="1.0" />
+                     </padding>
+                  </RadioButton>
+                  <Label fx:id="player13" onMouseClicked="#showPlayerStatistics" text="Player 3" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </VBox>
       <VBox alignment="TOP_RIGHT" layoutX="350.0" layoutY="2.0" prefHeight="92.0" prefWidth="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
@@ -56,31 +107,88 @@
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin>
             </Label>
-            <Label fx:id="player21" onMouseClicked="#showPlayerStatistics" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
-            <Label fx:id="player22" onMouseClicked="#showPlayerStatistics" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
-            <Label fx:id="player23" onMouseClicked="#showPlayerStatistics" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
+            <HBox fx:id="player21box" alignment="TOP_RIGHT">
+               <children>
+                  <Label fx:id="player21" onMouseClicked="#showPlayerStatistics" text="Player 1" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="p21" mnemonicParsing="false" onAction="#setPlayerIndex" selected="true">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="1.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="4.0" right="-4.0" />
+                     </HBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="team2players" />
+                     </toggleGroup>
+                  </RadioButton>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="2.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="player22box" alignment="TOP_RIGHT">
+               <children>
+                  <Label fx:id="player22" onMouseClicked="#showPlayerStatistics" text="Player 2" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="p22" mnemonicParsing="false" onAction="#setPlayerIndex" toggleGroup="$team2players">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="1.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="4.0" right="-4.0" />
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="2.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="player23box" alignment="TOP_RIGHT">
+               <children>
+                  <Label fx:id="player23" onMouseClicked="#showPlayerStatistics" text="Player 3" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="p23" mnemonicParsing="false" onAction="#setPlayerIndex" toggleGroup="$team2players">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets top="1.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="4.0" right="-4.0" />
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+            </HBox>
          </children>
       </VBox>
       <Label fx:id="team1score" layoutX="14.0" layoutY="298.0" text="0" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0">
