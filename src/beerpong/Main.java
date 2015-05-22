@@ -39,10 +39,23 @@ public class Main extends Application {
         launch(args);
     }
 
+    public static boolean exists(String className)
+    {
+        try {
+            Class.forName( className, false, null );
+            return true;
+        }
+        catch (ClassNotFoundException exception) {
+            return false;
+        }
+    }
+
     public static void setIcon()
     {
+        if ( exists( "com.apple.eawt.Application" ) )
+        {
             com.apple.eawt.Application.getApplication().setDockIconImage(new ImageIcon("resources/images/icon.png").getImage());
-
+        }
     }
 
 
