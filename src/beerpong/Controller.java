@@ -379,7 +379,7 @@ public class Controller implements Initializable{
         EventLogger events = game.getEventLogger();
 
         String text = events.getStatusMessage();
-        if (text.contains("...")) {
+        if (text != null && text.contains("...")) {
             statusfield.setFill(Paint.valueOf("red"));
         } else {
             statusfield.setFill(Paint.valueOf("blue"));

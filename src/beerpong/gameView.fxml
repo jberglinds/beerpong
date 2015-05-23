@@ -201,7 +201,7 @@
             <Font name="System Bold" size="72.0" />
          </font>
       </Label>
-      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="150.0" layoutY="320.0" prefViewportHeight="70.0" prefViewportWidth="300.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 10px; -fx-border-width: 2px;" stylesheets="@../../../../resources/css/scrolbar.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="320.0">
+      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="150.0" layoutY="320.0" prefViewportHeight="70.0" prefViewportWidth="300.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 10px; -fx-border-width: 2px;" stylesheets="@/css/scrolbar.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="320.0">
          <content>
             <TextFlow fx:id="eventFlow" layoutX="200.0" layoutY="312.0" prefHeight="58.0" prefWidth="533.0" textAlignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="320.0" />
          </content>

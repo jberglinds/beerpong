@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -20,26 +19,26 @@ public class Main extends Application {
 
         stage.setTitle("Beer Pong!");
 
+
         URL location = getClass().getResource("initGame.fxml");
         fxmlLoader.setLocation(location);
         fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
         Parent root = (Parent) fxmlLoader.load(location.openStream());
         Scene scene = new Scene(root, 800, 400);
-
         stage.setScene(scene);
-        Image ico = new Image("file:resources/images/icon.png");
+
+        Image ico = new Image(this.getClass().getResourceAsStream("/images/icon.png"));
         stage.getIcons().add(ico);
         stage.show();
-        setIcon();
+        setDockIconForMac();
 
     }
 
     public static void main(String[] args) {
-        setIcon();
         launch(args);
     }
 
-    public static boolean exists(String className)
+    public boolean exists(String className)
     {
         try {
             Class.forName( className, false, null );
@@ -50,11 +49,11 @@ public class Main extends Application {
         }
     }
 
-    public static void setIcon()
+    public void setDockIconForMac()
     {
         if ( exists( "com.apple.eawt.Application" ) )
         {
-            com.apple.eawt.Application.getApplication().setDockIconImage(new ImageIcon("resources/images/icon.png").getImage());
+            com.apple.eawt.Application.getApplication().setDockIconImage(new ImageIcon(this.getClass().getResource("/images/icon.png")).getImage());
         }
     }
 
